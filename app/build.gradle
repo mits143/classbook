@@ -1,0 +1,100 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.app.classbook"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    //material widgets
+    implementation 'com.google.android.material:material:1.3.0-alpha02'
+
+    //ui widgets cardView,recyclerview,gridLayout
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+
+    // Android Architecture
+    implementation 'androidx.lifecycle:lifecycle-common:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.3.0-alpha07'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.3.0-alpha07'
+
+
+    //RxJava2
+    implementation "io.reactivex.rxjava2:rxjava:2.2.14"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.8.1'
+
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // input validation
+    implementation "com.wajahatkarim3.easyvalidation:easyvalidation-core:1.0.1"
+
+    //shared preference encryption
+    implementation "androidx.security:security-crypto:1.1.0-alpha02"
+
+    // image
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //exo player
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.3'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.8.2'
+
+    //loader
+    implementation 'com.victor:lib:1.0.4'
+
+    implementation 'com.bignerdranch.android:expandablerecyclerview:3.0.0-RC1'
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-core:17.5.0'
+    implementation 'com.google.firebase:firebase-messaging:20.3.0'
+    implementation 'com.github.HamidrezaAmz:MagicalExoPlayer:1.0.16'
+}
+apply plugin: 'com.google.gms.google-services'

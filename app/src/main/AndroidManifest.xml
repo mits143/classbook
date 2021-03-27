@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.classbook">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activities.FilterActivity"></activity>
+        <activity android:name=".activities.DetailActivity" />
+        <activity android:name=".activities.VideoActivity" />
+        <activity android:name=".activities.SubTopic" />
+        <activity android:name=".activities.LearnEarn" />
+        <activity android:name=".activities.ReviewRatingActivity" />
+        <activity android:name=".activities.TrainigVideos" />
+        <activity android:name=".activities.SearchActivity" />
+        <activity android:name=".activities.ContactUsActivity" />
+        <activity android:name=".activities.ChangePasswordActivity" />
+        <activity android:name=".activities.CartActivity" />
+        <activity android:name=".activities.FavouriteActivity" />
+        <activity android:name=".activities.NotificationActivity" />
+        <activity android:name=".activities.ExpertDetailsActivity" />
+        <activity android:name=".activities.TeacherDetailsActivity" />
+        <activity android:name=".activities.TransactionActivity" />
+        <activity android:name=".activities.ChatActivity" />
+        <activity android:name=".activities.SubCategoryDetailsActivity" />
+        <activity android:name=".activities.ChatListActivity" />
+        <activity android:name=".activities.MyQuizActivity" />
+        <activity android:name=".activities.SettingsActivity" />
+        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".activities.QRCodeActivity" />
+        <activity android:name=".activities.CourseDetailsActivity" />
+        <activity android:name=".activities.CourseSubTopic" />
+        <activity android:name=".activities.AppEducationOutline1Activity" />
+        <activity android:name=".activities.AppEducationDetail3Activity" />
+        <activity android:name=".activities.SubjectActivity" />
+        <activity android:name=".activities.AppDirectoryHome4Activity" />
+        <activity android:name=".activities.SubscriptionsActivity" />
+        <activity android:name=".activities.EditProfileActivity" />
+        <activity android:name=".activities.UiWebViewWebViewBasicActivity" />
+        <activity android:name=".activities.SubCategoryList1Activity" />
+        <activity android:name=".activities.AppECommerceCategory4Activity" />
+        <activity android:name=".activities.AppECommerceCheckout5Activity" />
+        <activity android:name=".activities.AppEducationCategoryGrid1Activity" />
+        <activity android:name=".activities.AppEducationCourseCollectionList1Activity" />
+        <activity android:name=".activities.TopicActivity" />
+        <activity android:name=".activities.ClassDetailsActivity" />
+        <activity android:name=".activities.CoursesVideoActivity" />
+        <activity android:name=".fragment.BoardListFragment" />
+        <activity android:name=".activities.LevelActivity" />
+        <activity
+            android:name=".activities.SplashActivity"
+            android:theme="@style/AppTheme.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.SignUpActivity" />
+        <activity android:name=".activities.ForgotPasswordActivity" />
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.HomeActivity" />
+
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/app_icon" />
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

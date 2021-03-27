@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_grey_100"
+        android:orientation="vertical">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/md_grey_100">
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/favFloatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_16"
+                android:clickable="true"
+                app:backgroundTint="@color/colorPrimary"
+                app:layout_anchor="@id/appbar"
+                app:layout_anchorGravity="bottom|end"
+                app:srcCompat="@drawable/favorite" />
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/md_white_1000"
+                    android:fitsSystemWindows="true"
+                    app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:contentScrim="@color/colorPrimary"
+                    app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/md_grey_100">
+
+                        <ImageView
+                            android:id="@+id/placeImageView"
+                            android:layout_width="0dp"
+                            android:layout_height="250dp"
+                            android:contentDescription="TODO"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="1.0"
+                            tools:srcCompat="@drawable/baseline_image_black_24" />
+
+                        <ImageView
+                            android:id="@+id/gradientImageView"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/black_alpha_70" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--Header Layout-->
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="?android:actionBarSize"
+                        android:background="@color/colorPrimary">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/btnBack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:padding="10dp"
+                            android:src="@drawable/baseline_arrow_back_black_24"
+                            android:tint="@color/md_white_1000" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/teacherName"
+                            style="@style/HeaderTitleStyle"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_toStartOf="@id/ivNotification"
+                            android:layout_toEndOf="@id/btnBack" />
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivNotification"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_toStartOf="@id/ivFav"
+                            android:padding="4dp"
+                            android:src="@drawable/baseline_bell_40_grey_25"
+                            android:tint="@color/md_white_1000" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivFav"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_toStartOf="@id/ivCart"
+                            android:padding="4dp"
+                            android:src="@drawable/baseline_favourite_24"
+                            android:tint="@color/md_white_1000" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivCart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="4dp"
+                            android:padding="4dp"
+                            android:src="@drawable/baseline_basket_line_white_24"
+                            android:tint="@color/md_white_1000" />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nested_scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/md_grey_100"
+                android:scrollbars="none"
+                android:scrollingCache="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/md_grey_100">
+
+                        <View
+                            android:id="@+id/view6"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@color/colorLine"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView27" />
+
+                        <ImageView
+                            android:id="@+id/imageView27"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:tint="@color/md_grey_600"
+                            android:visibility="gone"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/baseline_like_line_24" />
+
+                        <TextView
+                            android:id="@+id/totalLikeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="999"
+                            android:visibility="gone"
+                            android:textColor="@color/md_grey_600"
+                            android:textSize="@dimen/font_body_s_size"
+                            app:layout_constraintStart_toEndOf="@+id/imageView27"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView28"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:visibility="gone"
+                            android:tint="@color/md_grey_600"
+                            app:layout_constraintStart_toEndOf="@+id/totalLikeTextView"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/baseline_comment_line_24" />
+
+                        <TextView
+                            android:id="@+id/totalCmtTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="99"
+                            android:visibility="gone"
+                            android:textColor="@color/md_grey_600"
+                            android:textSize="@dimen/font_body_s_size"
+                            app:layout_constraintStart_toEndOf="@+id/imageView28"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/priceTextview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="80dp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:textColor="@color/md_grey_600"
+                            android:textSize="@dimen/font_title_size"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/placeInfoCardView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/priceTextview">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView29"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:tint="@color/md_grey_600"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/baseline_call" />
+
+                                <TextView
+                                    android:id="@+id/phoneTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/roboto"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="@color/md_grey_600"
+                                    android:textSize="@dimen/font_body_size"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView29"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <ImageView
+                                    android:id="@+id/imageView30"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:tint="@color/md_grey_600"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/phoneTextView"
+                                    app:srcCompat="@drawable/baseline_website" />
+
+                                <TextView
+                                    android:id="@+id/websiteTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/roboto"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="@color/md_grey_600"
+                                    android:textSize="@dimen/font_body_size"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView30"
+                                    app:layout_constraintTop_toBottomOf="@+id/phoneTextView" />
+
+                                <ImageView
+                                    android:id="@+id/imageView31"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:tint="@color/md_grey_600"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/websiteTextView"
+                                    app:srcCompat="@drawable/baseline_opening" />
+
+                                <TextView
+                                    android:id="@+id/openingTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/roboto"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="@color/md_grey_600"
+                                    android:textSize="@dimen/font_body_size"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView31"
+                                    app:layout_constraintTop_toBottomOf="@+id/websiteTextView" />
+
+                                <ImageView
+                                    android:id="@+id/imageView32"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:tint="@color/md_grey_600"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/openingTextView"
+                                    app:srcCompat="@drawable/baseline_pin_dorp" />
+
+                                <TextView
+                                    android:id="@+id/addressTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/roboto"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="@color/md_grey_600"
+                                    android:textSize="@dimen/font_body_size"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView32"
+                                    app:layout_constraintTop_toBottomOf="@+id/openingTextView" />
+
+                                <ImageView
+                                    android:id="@+id/imageView33"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:scaleType="center"
+                                    android:tint="@color/md_grey_600"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/addressTextView"
+                                    app:srcCompat="@drawable/ic_action_arrow_right_top" />
+
+                                <TextView
+                                    android:id="@+id/distanceTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:fontFamily="@font/roboto"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="@color/md_grey_600"
+                                    android:textSize="@dimen/font_body_size"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView33"
+                                    app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/placeDescCardView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/placeInfoCardView">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/placeDescTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:fontFamily="@font/roboto"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="@color/md_grey_600"
+                                    android:textSize="@dimen/font_body_size"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/placeRatingCardView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/placeDescCardView">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/textView33"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="Ratings"
+                                    android:textColor="@color/md_grey_600"
+                                    android:textSize="@dimen/font_body_size"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/textView34"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:text="Reviews"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/totalReviewTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/roboto"
+                                    android:textColor="@color/md_grey_600"
+                                    android:textSize="@dimen/font_body_size"
+                                    app:layout_constraintEnd_toStartOf="@+id/textView34"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <RatingBar
+                                    android:id="@+id/placeRatingBar"
+                                    style="@style/Widget.AppCompat.RatingBar.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:rating="4.5"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+                                <TextView
+                                    android:id="@+id/ratingTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/roboto"
+                                    android:textColor="@color/md_grey_600"
+                                    android:textSize="@dimen/font_body_s_size"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/placeRatingBar" />
+
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/catsRecyclerView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/ratingTextView" />
+
+                                <View
+                                    android:id="@+id/view7"
+                                    android:layout_width="0dp"
+                                    android:layout_height="1dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="@dimen/space_8"
+                                    android:layout_marginEnd="16dp"
+                                    android:background="@color/colorLine"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/catsRecyclerView" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="Standards"
+                                    android:textColor="@color/md_grey_600"
+                                    android:textSize="@dimen/font_body_size"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+                                <TextView
+                                    android:id="@+id/viewAllTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:fontFamily="@font/roboto"
+                                    android:text="View All"
+                                    android:textColor="@color/md_blue_600"
+                                    android:textSize="@dimen/font_body_s_size"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/countryListRecyclerView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/space_2"
+                                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/viewAllTextView"
+                                    />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <RelativeLayout
+            android:id="@+id/loader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/md_black_transparent">
+
+            <com.victor.loading.rotate.RotateLoading
+                android:id="@+id/bookLoading"
+                android:layout_width="@dimen/space_100"
+                android:layout_height="@dimen/space_100"
+                app:loading_color="@color/md_deep_purple_900"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

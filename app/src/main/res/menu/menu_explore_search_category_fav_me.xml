@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeMenu"
+        android:icon="@drawable/baseline_grid_white_24"
+        android:title="Home" />
+    <item
+        android:id="@+id/classesMenu"
+        android:icon="@drawable/baseline_format_list_bullet_black_24"
+        android:title="Classes" />
+
+    <item
+        android:id="@+id/coursesMenu"
+        android:icon="@drawable/baseline_history_24"
+        android:title="Courses" />
+
+    <item
+        android:id="@+id/teachersMenu"
+        android:icon="@drawable/baseline_user_24"
+        android:title="Teachers" />
+    <item
+        android:id="@+id/expertMenu"
+        android:icon="@drawable/baseline_badge_white_24"
+        android:title="Experts" />
+
+</menu>

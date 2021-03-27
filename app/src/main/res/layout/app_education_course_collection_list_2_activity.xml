@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_grey_100">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/space_12"
+                android:tint="@color/md_white_1000"
+                android:src="@drawable/baseline_arrow_back_black_24" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/HeaderTitleStyle"
+                android:id="@+id/titleNameTextView"
+                android:text="Topic"
+                android:visibility="gone"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_toEndOf="@id/ivSetting"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/HeaderTitleStyle"
+                android:id="@+id/titleNameTextView1"
+                android:text="Sub Topic"
+                android:visibility="gone"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_toEndOf="@id/ivSetting"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/videoRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/space_4"
+            android:layout_marginTop="8dp"
+            android:fadeScrollbars="false"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/loader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_trans"
+        android:visibility="gone">
+
+        <com.victor.loading.rotate.RotateLoading
+            android:id="@+id/bookLoading"
+            android:layout_width="@dimen/space_100"
+            android:layout_height="@dimen/space_100"
+            android:layout_centerInParent="true"
+            app:loading_color="@color/md_deep_purple_900" />
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

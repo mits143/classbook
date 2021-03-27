@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_grey_200"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_8"
+            android:background="@drawable/layout_border"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Total Unread Messages :"
+                android:layout_marginStart="@dimen/space_8"
+                android:textColor="@color/md_grey_600"
+                android:textSize="@dimen/font_body_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="02"
+                android:textStyle="bold"
+                android:textSize="@dimen/font_h7_size"
+                android:textColor="@color/md_black"
+                android:layout_marginEnd="@dimen/space_8"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginEnd="@dimen/space_8"
+            app:cardCornerRadius="@dimen/space_4"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/space_16">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Your Transaction"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/md_black"
+                    android:textSize="@dimen/font_h7_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:fontFamily="@font/roboto"
+                    android:text="Course No. 09 purchased successfully.. You can start studying Course 09 now. "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorTextLight"
+                    android:textSize="@dimen/font_title_size" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginEnd="@dimen/space_8"
+            app:cardCornerRadius="@dimen/space_4"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/space_16">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Your Transaction is Complete"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/md_black"
+                    android:textSize="@dimen/font_h7_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:fontFamily="@font/roboto"
+                    android:text="Course No. 09 purchased successfully.. "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorTextLight"
+                    android:textSize="@dimen/font_title_size" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginEnd="@dimen/space_8"
+            app:cardCornerRadius="@dimen/space_4"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/space_16">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Your Transaction is Complete"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/md_black"
+                    android:textSize="@dimen/font_h7_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:fontFamily="@font/roboto"
+                    android:text="Course No. 09 purchased successfully.. "
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorTextLight"
+                    android:textSize="@dimen/font_title_size" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</FrameLayout>

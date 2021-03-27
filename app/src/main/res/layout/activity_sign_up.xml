@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_grey_300"
+        tools:context=".activities.SignUpActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/registerButton"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="12dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Register"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="@dimen/font_title_size"
+                        android:theme="@style/PSButton.Primary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view55" />
+
+                    <Button
+                        android:id="@+id/loginButton"
+                        style="@style/PSButton.Default.Borderless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="Already Member? Login"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/font_body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <Button
+                        android:id="@+id/helpButton"
+                        style="@style/PSButton.Default.Borderless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="Need Help ?"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/font_body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <View
+                        android:id="@+id/view60"
+                        android:layout_width="50dp"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
+
+                    <LinearLayout
+                        android:id="@+id/fl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="@dimen/space_44"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageView98"
+                            android:layout_width="125dp"
+                            android:layout_height="125dp"
+                            app:srcCompat="@drawable/splash" />
+
+                        <TextView
+                            android:id="@+id/txtSelect"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/app_restaurant_transaction_shape"
+                            android:backgroundTint="@color/colorAccentButton"
+                            android:padding="5dp"
+                            android:text="Select Profile Picture"
+                            android:textColor="@color/md_white_1000"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/view55"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/white_background"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fl">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingBottom="@dimen/space_8">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/space_8"
+                                android:layout_marginTop="@dimen/space_8"
+                                android:fontFamily="@font/roboto_medium"
+                                android:padding="@dimen/space_8"
+                                android:text="Fill up Basic information"
+                                android:textColor="@color/colorTextLight"
+                                android:textSize="@dimen/font_h7_size"
+                                android:textStyle="bold"
+                                tools:textColor="@color/colorTextLight" />
+
+                            <EditText
+                                android:id="@+id/cpCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/space_8"
+                                android:layout_marginTop="@dimen/space_8"
+                                android:layout_marginRight="@dimen/space_8"
+                                android:ems="10"
+                                android:focusable="false"
+                                android:hint="Channel Partner Code"
+                                android:textAlignment="viewStart"
+                                android:visibility="gone" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_8"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/space_8"
+                                android:weightSum="2"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <EditText
+                                    android:id="@+id/firstName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:hint="First Name"
+                                    android:inputType="textPersonName"
+                                    android:textAlignment="viewStart" />
+
+                                <EditText
+                                    android:id="@+id/lastName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:hint="Last Name"
+                                    android:inputType="textPersonName"
+                                    android:textAlignment="viewStart" />
+                            </LinearLayout>
+
+                            <EditText
+                                android:id="@+id/email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:hint="Email"
+                                android:inputType="textEmailAddress"
+                                android:textAlignment="viewStart" />
+
+                            <EditText
+                                android:id="@+id/mobileNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:hint="Mobile Number"
+                                android:inputType="phone"
+                                android:maxLength="10"
+                                android:textAlignment="viewStart" />
+
+                            <EditText
+                                android:id="@+id/altMobileNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:hint="Alt. Mobile Number"
+                                android:inputType="phone"
+                                android:maxLength="10"
+                                android:textAlignment="viewStart" />
+
+                            <EditText
+                                android:id="@+id/dateOfBirth"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:focusable="false"
+                                android:hint="Date of Birth"
+                                android:textAlignment="viewStart" />
+
+                            <EditText
+                                android:id="@+id/genderLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:focusable="false"
+                                android:hint="Gender"
+                                android:text="Male"
+                                android:textAlignment="viewStart" />
+
+                            <EditText
+                                android:id="@+id/addressTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:background="@drawable/layout_border_grey"
+                                android:gravity="top"
+                                android:hint="Address"
+                                android:lines="3"
+                                android:padding="@dimen/space_8"
+                                android:singleLine="false" />
+
+                            <AutoCompleteTextView
+                                android:id="@+id/state"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:focusable="false"
+                                android:hint="Select State"
+                                android:textAlignment="viewStart" />
+
+                            <AutoCompleteTextView
+                                android:id="@+id/city"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:focusable="false"
+                                android:hint="Select City"
+                                android:textAlignment="viewStart" />
+
+                            <AutoCompleteTextView
+                                android:id="@+id/zipCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:focusable="false"
+                                android:hint="Select ZipCode"
+                                android:textAlignment="viewStart" />
+
+                            <EditText
+                                android:id="@+id/board"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:focusable="false"
+                                android:hint="Select Education Board"
+                                android:textAlignment="viewStart"
+                                android:visibility="gone" />
+
+                            <EditText
+                                android:id="@+id/medium"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:focusable="false"
+                                android:hint="Select Medium"
+                                android:textAlignment="viewStart"
+                                android:visibility="gone" />
+
+                            <EditText
+                                android:id="@+id/standard"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:focusable="false"
+                                android:hint="Select Education Standard"
+                                android:textAlignment="viewStart"
+                                android:visibility="gone" />
+
+                            <EditText
+                                android:id="@+id/teachingExp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:hint="Teaching Experience"
+                                android:textAlignment="viewStart"
+                                android:visibility="gone" />
+
+                            <EditText
+                                android:id="@+id/regNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:ems="10"
+                                android:hint="Registration Number"
+                                android:textAlignment="viewStart"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvImages"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/images"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_8"
+                                android:background="@drawable/app_restaurant_transaction_shape"
+                                android:backgroundTint="@color/colorPrimary"
+                                android:gravity="center"
+                                android:padding="@dimen/space_8"
+                                android:text="Select Class Images"
+                                android:textColor="@color/md_white_1000"
+                                android:visibility="gone" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:id="@+id/loader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/book_loading_background"
+            android:clickable="true"
+            android:visibility="gone">
+
+            <com.victor.loading.rotate.RotateLoading
+                android:id="@+id/bookLoading"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                app:loading_color="@color/md_deep_purple_900" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

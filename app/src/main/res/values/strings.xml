@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">ClassBook</string>
+    <string name="alert_enter_valid_email">Please enter valid email</string>
+    <string name="alert_enter_valid_password_length_min">Password should be minimum 8 characters long</string>
+    <string name="alert_enter_valid_password_length_max">Password should be maximum 15 characters long</string>
+    <string name="alert_enter_valid_password_number">Password should contain at least one number</string>
+    <string name="alert_enter_valid_password_cap_letter">Password should contain at least one capital letter</string>
+    <string name="alert_enter_valid_password_small_letter">Password should contain at least one small letter</string>
+    <string name="alert_enter_valid_password_special_char">Password should contain at least one special character</string>
+    <string name="alert_password_not_match">New and Confirm Password not matched</string>
+    <string name="alert_old_new_password">Old and New password should not br the same</string>
+
+    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="dummy_medium_text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </string>
+
+
+    <string name="dummy_paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis, velit eget dapibus malesuada, massa eros condimentum mi, in pulvinar dui sapien at mi. Aenean porttitor vitae elit vitae sagittis. Nullam porta mauris eget libero ornare maximus. Curabitur vehicula quam vel pulvinar efficitur. Donec ultricies sapien vitae auctor congue. Suspendisse posuere malesuada augue nec sodales. Etiam ut erat massa. Integer gravida justo eu elit ornare ultrices. Curabitur augue dui, dapibus vel luctus eu, pellentesque quis erat. Suspendisse elementum justo vitae ante dapibus, et dignissim metus iaculis. Nam nec condimentum dolor, sodales scelerisque lacus. Suspendisse placerat facilisis felis id rutrum. Praesent posuere nulla id tellus tristique rutrum.\n\nDonec vitae sem malesuada, mollis velit et, faucibus erat. Suspendisse et rhoncus velit, non vestibulum erat. Maecenas a posuere diam. Curabitur cursus pharetra lacus, et euismod nisi pellentesque eu. Maecenas finibus dui scelerisque ipsum lacinia viverra. Donec eros risus, placerat id leo eget, sodales congue augue. Nullam tincidunt neque eu tellus varius facilisis. Proin sit amet mi eu sem scelerisque euismod eget sed lectus. Duis sed ante a magna tempor luctus eget in ex. Maecenas ligula arcu, tincidunt eu iaculis vitae, euismod vitae ex. Sed mollis pretium turpis, eu hendrerit eros interdum et. Pellentesque fermentum magna nec tellus ullamcorper dapibus. Fusce et vulputate tellus.\n\nDonec sem lorem, mollis tincidunt interdum non, convallis eget lacus. In imperdiet diam condimentum ex mattis efficitur. In in tellus vitae urna ultrices molestie. Fusce ac elementum ante. Sed porttitor rutrum interdum. Etiam tellus diam, hendrerit ut tellus quis, malesuada consectetur felis. Aliquam fermentum sapien ipsum, id hendrerit lorem rhoncus vitae. In hac habitasse platea dictumst.
+    </string>
+    <string name="title_activity_uni_search">UniSearchActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="no_internet_connection">Check your internet connection</string>
+    <string name="error">Something went wrong, try again</string>
+    <string name="internal_server_error">Server error</string>
+    <string name="login">Login</string>
+    <string name="skip">Skip</string>
+    <string name="invalid_email_pwd">Invalid email or password</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_photo">Choose Photo</string>
+    <string name="done">Done</string>
+    <string name="default_notification_channel_id">100</string>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+</resources>

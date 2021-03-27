@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/md_black_transparent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        android:background="@drawable/app_restaurant_transaction_shape"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true">
+
+        <TextView
+            android:id="@+id/txtTakePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:textStyle="bold"
+            android:textColor="@color/md_white_1000"
+            android:text="@string/take_photo"
+            android:textSize="14sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardElevation="3dp"
+        android:background="@drawable/app_restaurant_transaction_shape"
+        app:cardUseCompatPadding="true">
+
+        <TextView
+            android:id="@+id/txtChoosePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="12dp"
+            android:textColor="@color/md_white_1000"
+            android:text="@string/choose_photo"
+            android:textSize="14sp" />
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

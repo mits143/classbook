@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "411127564115",
+    "firebase_url": "https://classbookapplication.firebaseio.com",
+    "project_id": "classbookapplication",
+    "storage_bucket": "classbookapplication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411127564115:android:4e5d6b7e47f5cf5e8783a6",
+        "android_client_info": {
+          "package_name": "com.app.classbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411127564115-hpi3kg6caf7f93mn1ts861283cr7rqkd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADXkdzjw7v9QkKN1ZIqIiaauJd9TKmYJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411127564115-hpi3kg6caf7f93mn1ts861283cr7rqkd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

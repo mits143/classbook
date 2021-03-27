@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_white_1000"
+    tools:context=".activities.QRCodeActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:padding="4dp"
+            android:src="@drawable/baseline_arrow_back_black_24"
+            android:tint="@color/md_white_1000" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/HeaderTitleStyle"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_toEndOf="@id/ivSetting"
+            android:text="QR Code" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_16"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:text="Scan QR Code to get the link"
+        android:textColor="@color/md_grey_800"
+        android:textSize="@dimen/font_h7_size"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/qrcode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_24"
+        android:layout_marginEnd="@dimen/space_24"
+        android:background="@color/md_white_1000"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/space_24"
+        android:padding="@dimen/space_8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto"
+            android:text="User Name :"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorTextLight"
+            android:textSize="@dimen/font_body_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/roboto"
+            android:text="Sameer Kapoor"
+            android:textAlignment="viewStart"
+            android:textColor="@color/md_black"
+            android:textSize="@dimen/font_h7_size"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_24"
+        android:layout_marginEnd="@dimen/space_24"
+        android:background="@color/md_white_1000"
+        android:gravity="center"
+        android:padding="@dimen/space_8"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto"
+            android:text="QR Code :"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorTextLight"
+            android:textSize="@dimen/font_body_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/roboto"
+            android:text="IM00500876"
+            android:textAlignment="viewStart"
+            android:textColor="@color/md_black"
+            android:textSize="@dimen/font_h7_size"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_36"
+        android:layout_marginTop="@dimen/space_16"
+        android:layout_marginEnd="@dimen/space_36"
+        android:background="@drawable/button_round_corner"
+        android:padding="@dimen/space_16"
+        android:text="Share Code"
+        android:textSize="@dimen/font_title_size"
+        android:textColor="@color/md_white_1000"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

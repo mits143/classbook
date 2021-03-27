@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:padding="4dp"
+                android:src="@drawable/baseline_arrow_back_black_24"
+                android:tint="@color/md_white_1000" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/HeaderTitleStyle"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_toEndOf="@id/ivBack"
+                android:text="Edit Profile" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/confirm_button"
+        android:background="@color/md_white_1000"
+        android:scrollbars="none"
+        android:scrollingCache="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/space_16"
+                    android:layout_marginRight="@dimen/space_16"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_16"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/space_8">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Basic Information"
+                            android:textSize="@dimen/font_title_size"
+                            tools:textColor="@color/md_grey_600" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/space_8"
+                            android:background="@color/md_grey_400" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/stFName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/space_8"
+                            android:text="Sameer"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/md_black"
+                            android:textSize="@dimen/font_title_size" />
+
+                        <TextView
+                            android:id="@+id/stLName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/space_8"
+                            android:text="Dharmashikari"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/md_black"
+                            android:textSize="@dimen/font_title_size" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/space_8"
+                            android:text="Male"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/md_black"
+                            android:textSize="@dimen/font_title_size" />
+
+
+                        <TextView
+                            android:id="@+id/dateOfBirth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/space_8"
+                            android:text="06 June 1996"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/md_black"
+                            android:textSize="@dimen/font_title_size" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="@dimen/space_8"
+                        android:text="temps.is.cool@gmail.com"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/md_black"
+                        android:textSize="@dimen/font_title_size" />
+
+
+                    <TextView
+                        android:id="@+id/mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_8"
+                        android:layout_weight="1"
+                        android:padding="@dimen/space_8"
+                        android:text="09776373888"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/md_black"
+                        android:textSize="@dimen/font_title_size" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/space_8"
+                        android:background="@color/md_grey_400" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_8">
+
+                        <EditText
+                            android:id="@+id/state"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:hint="Select State"
+                            android:textAlignment="viewStart" />
+
+                        <Spinner
+                            android:id="@+id/stateSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_8">
+
+                        <EditText
+                            android:id="@+id/city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:hint="Select City"
+                            android:textAlignment="viewStart" />
+
+                        <Spinner
+                            android:id="@+id/citySpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
+
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/space_8"
+                        android:gravity="top"
+                        android:hint="Address"
+                        android:lines="3"
+                        android:singleLine="false" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_8">
+
+                        <EditText
+                            android:id="@+id/zipCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:hint="Select ZipCode"
+                            android:textAlignment="viewStart" />
+
+                        <Spinner
+                            android:id="@+id/zipCodeSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_8">
+
+                        <EditText
+                            android:id="@+id/board"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:hint="Education Board"
+                            android:textAlignment="viewStart" />
+
+                        <Spinner
+                            android:id="@+id/boardSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_8">
+
+                        <EditText
+                            android:id="@+id/standard"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:hint="Standard"
+                            android:textAlignment="viewStart" />
+
+                        <Spinner
+                            android:id="@+id/standardSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_8">
+
+                        <EditText
+                            android:id="@id/medium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:hint="Medium"
+                            android:textAlignment="viewStart" />
+
+                        <Spinner
+                            android:id="@+id/mediumSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/confirm_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@color/colorPrimary"
+                    android:padding="@dimen/space_16"
+                    android:text="Save Profile"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/loader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/book_loading_background"
+                android:visibility="gone">
+
+                <com.victor.loading.rotate.RotateLoading
+                    android:id="@+id/bookLoading"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_centerInParent="true"
+                    app:loading_color="@color/md_deep_purple_900" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_grey_100"
+        android:orientation="vertical">
+
+        <!--Header Layout-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:padding="4dp"
+                android:src="@drawable/baseline_setting_24"
+                android:tint="@color/md_white_1000" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/HeaderTitleStyle"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_toStartOf="@id/ivNotification"
+                android:layout_toEndOf="@id/ivSetting"
+                android:text="Home" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toStartOf="@id/ivFav"
+                android:padding="4dp"
+                android:src="@drawable/baseline_bell_40_grey_25"
+                android:tint="@color/md_white_1000" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toStartOf="@id/ivCart"
+                android:padding="4dp"
+                android:src="@drawable/baseline_favourite_24"
+                android:tint="@color/md_white_1000" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:padding="4dp"
+                android:src="@drawable/baseline_basket_line_white_24"
+                android:tint="@color/md_white_1000" />
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView289"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Courses"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="@dimen/font_title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvTeachersList" />
+
+                <TextView
+                    android:id="@+id/viewAllTrendingCourseTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="VIEW ALL"
+                    android:textColor="@color/md_grey_600"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView289"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView289" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCourses"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:fadeScrollbars="false"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView289" />
+
+                <TextView
+                    android:id="@+id/expert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Career Experts"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="@dimen/font_title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvCourses" />
+
+
+                <TextView
+                    android:id="@+id/viewAllEx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="VIEW ALL"
+                    android:textColor="@color/md_grey_600"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/expert"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/expert" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCareerExperts"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="16dp"
+                    android:fadeScrollbars="false"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/expert" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:background="@drawable/layout_border_grey"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/rvCareerExperts">
+
+
+                    <RelativeLayout
+                        android:id="@+id/whyChooseLink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_16">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Learn &amp; Earn"
+                            android:textColor="@color/md_grey_800"
+                            android:textSize="@dimen/font_title_size" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/space_8"
+                            android:rotation="180"
+                            android:src="@drawable/baseline_arrow_back_black_24"
+                            app:tint="@color/md_grey_400" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/llTrainingVideos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_16">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Training Videos"
+                            android:textColor="@color/md_grey_800"
+                            android:textSize="@dimen/font_title_size" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/space_8"
+                            android:rotation="180"
+                            android:src="@drawable/baseline_arrow_back_black_24"
+                            app:tint="@color/md_grey_400" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTeachersList"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="16dp"
+                    android:fadeScrollbars="false"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView288" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/pagerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView284">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/imageViewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/viewPagerCountDots"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:scaleType="fitXY"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Boards"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="@dimen/font_title_size"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pagerLayout" />
+
+                <TextView
+                    android:id="@+id/viewAllNewCats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="VIEW ALL"
+                    android:textColor="@color/md_grey_600"
+                    android:textSize="14sp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView28"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView28" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/catsRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+                <RelativeLayout
+                    android:id="@+id/search_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_8"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginEnd="@dimen/space_8"
+                    android:background="@drawable/layout_border_grey"
+                    android:padding="@dimen/space_8"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/space_8"
+                        android:text="Search"
+                        android:textColor="@color/md_grey_600"
+                        android:textSize="@dimen/font_h7_size" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/space_8"
+                        android:src="@drawable/baseline_fab_search_24"
+                        android:tint="@color/md_grey_400" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textView284"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Welcome to ClassBook"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="@dimen/font_title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/search_button" />
+
+                <TextView
+                    android:id="@+id/textView285"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Classes"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="@dimen/font_title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/catsRecyclerView" />
+
+                <TextView
+                    android:id="@+id/viewAllNewCourseTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="VIEW ALL"
+                    android:textColor="@color/md_grey_600"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView285"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView285" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvClasses"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView285" />
+
+                <TextView
+                    android:id="@+id/textView288"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Teachers"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="@dimen/font_title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvClasses" />
+
+                <TextView
+                    android:id="@+id/viewAllTopRatedCourseTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="VIEW ALL"
+                    android:textColor="@color/md_grey_600"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView288"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView288" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

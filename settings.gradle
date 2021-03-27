@@ -1,0 +1,2 @@
+rootProject.name='Class Book'
+include ':app'
