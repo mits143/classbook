@@ -1,5 +1,6 @@
 package com.app.classbook.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -25,13 +26,17 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPwdView.MainView {
     }
 
     fun init() {
+        presenter = ForgotPwdPresenter(this, this)
+        loginButton.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
         resetButton.setOnClickListener {
             submit()
         }
     }
 
     private fun submit() {
-        presenter = ForgotPwdPresenter(this, this)
         if (!isValidEmail(etEmail.text.toString().trim())) {
             etEmail.error = "Enter valid email"
             etEmail.requestFocus()
@@ -53,7 +58,7 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPwdView.MainView {
     override fun onSuccess(responseModel: Response<JsonObject>) {
         if (responseModel.body() != null) {
             Toast.makeText(this, responseModel.body()!!.get("message").asString, Toast.LENGTH_SHORT)
-                .show()
+                    .show()
         }
         finish()
     }
@@ -65,7 +70,7 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPwdView.MainView {
             }
             500 -> {
                 Toast.makeText(this, getString(R.string.internal_server_error), Toast.LENGTH_SHORT)
-                    .show()
+                        .show()
             }
             else -> {
                 Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show()

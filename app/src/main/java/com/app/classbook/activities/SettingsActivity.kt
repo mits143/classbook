@@ -17,6 +17,8 @@ import com.app.classbook.util.Constant.Companion.HOWITWORKSAPI
 import com.app.classbook.util.Constant.Companion.PRIVACY_POLICY
 import com.app.classbook.util.Constant.Companion.RETURNANDREFUNDPOLICY
 import com.app.classbook.util.Constant.Companion.TERMSOFCONDITIONSAPI
+import com.app.classbook.util.Utils
+import com.app.classbook.util.Utils.getBasicDialog
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -38,21 +40,21 @@ class SettingsActivity : AppCompatActivity() {
         }
         linearProfile.setOnClickListener {
             if (TextUtils.equals(SharedPreference.authToken, "Default"))
-                startActivity(Intent(this, LoginActivity::class.java))
+                getBasicDialog(this@SettingsActivity)
             else
                 startActivity(Intent(this, ProfileActivity::class.java))
         }
 
         linearSubs.setOnClickListener {
             if (TextUtils.equals(SharedPreference.authToken, "Default"))
-                startActivity(Intent(this, LoginActivity::class.java))
+                getBasicDialog(this@SettingsActivity)
             else
                 startActivity(Intent(this, SubscriptionsActivity::class.java))
         }
 
         linearQuiz.setOnClickListener {
             if (TextUtils.equals(SharedPreference.authToken, "Default"))
-                startActivity(Intent(this, LoginActivity::class.java))
+                getBasicDialog(this@SettingsActivity)
             else
                 startActivity(Intent(this, MyQuizActivity::class.java))
         }
@@ -63,7 +65,7 @@ class SettingsActivity : AppCompatActivity() {
 
         linearChangePassword.setOnClickListener {
             if (TextUtils.equals(SharedPreference.authToken, "Default"))
-                startActivity(Intent(this, LoginActivity::class.java))
+                getBasicDialog(this@SettingsActivity)
             else
                 startActivity(Intent(this, ChangePasswordActivity::class.java))
         }
@@ -74,7 +76,7 @@ class SettingsActivity : AppCompatActivity() {
 
         linearQRCode.setOnClickListener {
             if (TextUtils.equals(SharedPreference.authToken, "Default"))
-                startActivity(Intent(this, LoginActivity::class.java))
+                getBasicDialog(this@SettingsActivity)
             else
                 startActivity(Intent(this, QRCodeActivity::class.java))
         }
@@ -143,7 +145,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         linearLogout.setOnClickListener {
-            getBasicDialog()
+            LogoutDialog()
         }
     }
 
@@ -155,7 +157,7 @@ class SettingsActivity : AppCompatActivity() {
             linearLogout.visibility = View.VISIBLE
     }
 
-    private fun getBasicDialog() {
+    private fun LogoutDialog() {
         AlertDialog.Builder(this)
             .setTitle("Logout")
             .setMessage("Do you really want to Logout?")

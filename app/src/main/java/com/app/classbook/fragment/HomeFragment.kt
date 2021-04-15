@@ -2,6 +2,7 @@ package com.app.classbook.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -220,13 +221,22 @@ class HomeFragment : Fragment(), FragmentHomeView.MainView {
             startActivity(Intent(requireActivity(), SettingsActivity::class.java))
         }
         ivNotification.setOnClickListener {
-            startActivity(Intent(requireActivity(), NotificationActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(context!!)
+            else
+                startActivity(Intent(requireActivity(), NotificationActivity::class.java))
         }
         ivFav.setOnClickListener {
-            startActivity(Intent(requireActivity(), FavouriteActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(context!!)
+            else
+                startActivity(Intent(requireActivity(), FavouriteActivity::class.java))
         }
         ivCart.setOnClickListener {
-            startActivity(Intent(requireActivity(), CartActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(context!!)
+            else
+                startActivity(Intent(requireActivity(), CartActivity::class.java))
         }
 
         viewAllNewCats.setOnClickListener {

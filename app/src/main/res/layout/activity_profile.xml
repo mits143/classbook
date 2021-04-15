@@ -283,13 +283,16 @@
                         app:srcCompat="@drawable/baseline_mail_24"
                         app:tint="@color/colorPrimaryDark" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/emailTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:background="@drawable/edittext_line_border"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
+                        android:focusableInTouchMode="false"
+                        android:padding="5dp"
                         android:fontFamily="@font/roboto"
                         android:textAlignment="viewStart"
                         android:textColor="@color/md_blue_600"
@@ -325,12 +328,15 @@
                         app:layout_constraintStart_toEndOf="@+id/imageView52"
                         app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
 
-                    <TextView
+                    <EditText
+                        android:background="@drawable/edittext_line_border"
                         android:id="@+id/phoneTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:focusableInTouchMode="false"
                         android:layout_marginTop="8dp"
+                        android:padding="5dp"
                         android:layout_marginEnd="8dp"
                         android:fontFamily="@font/roboto"
                         android:textAlignment="viewStart"
@@ -341,7 +347,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView76" />
 
                     <ImageView
-                        android:id="@+id/imageView54"
+                        android:id="@+id/imageViewAddress"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="24dp"
@@ -349,6 +355,52 @@
                         app:tint="@color/colorPrimaryDark"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/phoneTextView"
+                        app:srcCompat="@drawable/baseline_address" />
+
+                    <TextView
+                        android:id="@+id/textViewAddress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="Address"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorTextLight"
+                        android:textSize="@dimen/font_body_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView52"
+                        app:layout_constraintTop_toBottomOf="@+id/phoneTextView" />
+
+                    <EditText
+                        android:background="@drawable/edittext_line_border"
+                        android:id="@+id/AddressTextView"
+                        android:focusable="false"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:focusableInTouchMode="false"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/roboto"
+                        android:textAlignment="viewStart"
+                        android:padding="5dp"
+                        android:textColor="@color/md_blue_600"
+                        android:textSize="@dimen/font_body_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageViewAddress"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+
+                    <ImageView
+                        android:id="@+id/imageView54"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        app:tint="@color/colorPrimaryDark"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/AddressTextView"
                         app:srcCompat="@drawable/baseline_website" />
 
                     <TextView
@@ -365,16 +417,20 @@
                         android:textSize="@dimen/font_body_size"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageView54"
-                        app:layout_constraintTop_toBottomOf="@+id/phoneTextView" />
+                        app:layout_constraintTop_toBottomOf="@+id/AddressTextView" />
 
-                    <TextView
+                    <EditText
+                        android:background="@drawable/edittext_line_border"
                         android:id="@+id/websiteTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
+                        android:padding="5dp"
+                        android:focusable="false"
                         android:fontFamily="@font/roboto"
+                        android:focusableInTouchMode="false"
                         android:textAlignment="viewStart"
                         android:textColor="@color/md_blue_600"
                         android:textSize="@dimen/font_body_size"
@@ -410,14 +466,18 @@
                         app:layout_constraintStart_toEndOf="@+id/imageView55"
                         app:layout_constraintTop_toBottomOf="@+id/websiteTextView" />
 
-                    <TextView
+                    <EditText
+                        android:background="@drawable/edittext_line_border"
                         android:id="@+id/textView27"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
+                        android:focusableInTouchMode="false"
                         android:layout_marginEnd="8dp"
                         android:fontFamily="@font/roboto"
+                        android:focusable="false"
+                        android:padding="5dp"
                         android:textAlignment="viewStart"
                         android:textColor="@color/md_blue_600"
                         android:textSize="@dimen/font_body_size"
@@ -452,14 +512,18 @@
                         app:layout_constraintStart_toEndOf="@+id/imageView26"
                         app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
-                    <TextView
+                    <EditText
+                        android:background="@drawable/edittext_line_border"
                         android:id="@+id/tvMedium"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
+                        android:focusableInTouchMode="false"
+                        android:focusable="false"
                         android:fontFamily="@font/roboto"
+                        android:padding="5dp"
                         android:textAlignment="viewStart"
                         android:textColor="@color/md_blue_600"
                         android:textSize="@dimen/font_body_size"
@@ -504,13 +568,16 @@
                                 app:layout_constraintStart_toEndOf="@+id/imageView"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <TextView
+                            <EditText
+                                android:background="@drawable/edittext_line_border"
                                 android:id="@+id/tvDOB"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
+                                android:focusableInTouchMode="false"
+                                android:padding="5dp"
                                 android:fontFamily="@font/roboto"
                                 android:textAlignment="viewStart"
                                 android:textColor="@color/md_blue_600"

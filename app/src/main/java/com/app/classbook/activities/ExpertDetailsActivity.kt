@@ -3,6 +3,7 @@ package com.app.classbook.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import com.app.classbook.R
@@ -40,13 +41,22 @@ class ExpertDetailsActivity : AppCompatActivity(), ActivityExpertDetailView.Main
             finish()
         }
         ivNotification.setOnClickListener {
-            startActivity(Intent(this, NotificationActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(this)
+            else
+                startActivity(Intent(this, NotificationActivity::class.java))
         }
         ivFav.setOnClickListener {
-            startActivity(Intent(this, FavouriteActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(this)
+            else
+                startActivity(Intent(this, FavouriteActivity::class.java))
         }
         ivCart.setOnClickListener {
-            startActivity(Intent(this, CartActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(this)
+            else
+                startActivity(Intent(this, CartActivity::class.java))
         }
     }
 
@@ -61,7 +71,7 @@ class ExpertDetailsActivity : AppCompatActivity(), ActivityExpertDetailView.Main
     }
 
     override fun onSuccess(responseModel: Response<ExpertCareerDetailResponse>) {
-        
+
     }
 
     override fun onSuccessAddToFav(responseModel: Response<JsonObject>) {

@@ -55,6 +55,7 @@ interface Constant {
         const val SUB_TOPIC_DATA = "Common/TopicSubtopics/smbid/subjectId/topicId"
         const val SUB_VIDEO_DATA = "Common/SubtopicVideos/smbid/subjectId/topicId/subtopicId"
         const val GET_SUBSCRIPTION_DETAIL = "ShoppingCart/GetSubscriptionDetail"
+        const val GET_TRANSACTION_DETAIL = "ShoppingCart/GetTransactionDetail"
         const val REMOVE_FROM_CART = "ShoppingCart/RemoveFromCart/{cartItemId}"
         const val GET_FAVOURITE = "Common/GetFavourite"
         const val GETSTUDENTBYID = "Student/GetStudentById"

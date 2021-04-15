@@ -35,6 +35,7 @@ import androidx.core.content.FileProvider
 import com.app.classbook.BuildConfig
 import com.app.classbook.R
 import com.app.classbook.SharedPreference
+import com.app.classbook.activities.LoginActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -810,6 +811,27 @@ object Utils {
             context.contentResolver,
             Settings.Secure.ANDROID_ID
         )
+    }
+
+    fun getBasicDialog(context: Context) {
+        AlertDialog.Builder(context)
+            .setTitle("Login")
+            .setMessage("Login to continue services")
+            .setPositiveButton("Yes") { dialog, _ ->
+                dialog.cancel()
+                SharedPreference.authToken = "Default"
+                SharedPreference.isLogin = false
+                val intent = Intent(context, LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(intent)
+                (context as Activity).finishAffinity()
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.cancel()
+            }
+            .setIcon(R.drawable.baseline_warning_black_24)
+            .show()
     }
 
 }

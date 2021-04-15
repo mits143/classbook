@@ -2,6 +2,7 @@ package com.app.classbook.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import com.app.classbook.model.response.AllClassesResponse
 import com.app.classbook.model.response.AllClassesResponseItem
 import com.app.classbook.pagination.RecyclerViewLoadMoreScroll
 import com.app.classbook.presenter.FragmentExpertsPresenter
+import com.app.classbook.util.Utils
 import com.app.classbook.util.Utils.showLoginAlert
 import com.app.classbook.view.FragmentExpertsView
 import kotlinx.android.synthetic.main.fragment_expert_list.*
@@ -27,6 +29,9 @@ import kotlinx.android.synthetic.main.fragment_expert_list.ivFav
 import kotlinx.android.synthetic.main.fragment_expert_list.ivNotification
 import kotlinx.android.synthetic.main.fragment_expert_list.ivSetting
 import kotlinx.android.synthetic.main.fragment_expert_list.loader
+import kotlinx.android.synthetic.main.fragment_expert_list.searchView
+import kotlinx.android.synthetic.main.fragment_expert_list.txtNoRecords
+import kotlinx.android.synthetic.main.fragment_teachers_list.*
 import retrofit2.Response
 
 class ExpertListFragment : Fragment(), FragmentExpertsView.MainView,
@@ -106,13 +111,22 @@ class ExpertListFragment : Fragment(), FragmentExpertsView.MainView,
             startActivity(Intent(requireActivity(), SettingsActivity::class.java))
         }
         ivNotification.setOnClickListener {
-            startActivity(Intent(requireActivity(), NotificationActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(context!!)
+            else
+                startActivity(Intent(requireActivity(), NotificationActivity::class.java))
         }
         ivFav.setOnClickListener {
-            startActivity(Intent(requireActivity(), FavouriteActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(context!!)
+            else
+                startActivity(Intent(requireActivity(), FavouriteActivity::class.java))
         }
         ivCart.setOnClickListener {
-            startActivity(Intent(requireActivity(), CartActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(context!!)
+            else
+                startActivity(Intent(requireActivity(), CartActivity::class.java))
         }
         filter.setOnClickListener {
             startActivityForResult(
@@ -163,25 +177,27 @@ class ExpertListFragment : Fragment(), FragmentExpertsView.MainView,
     }
 
     override fun onSuccess(responseModel: Response<AllClassesResponse>) {
-        if (responseModel.body() != null && responseModel.body()!!.data.isNotEmpty()) {
-            if (scrollListener!!.loaded) {
-                scrollListener!!.setLoaded()
-            }
-            if (pageIndex == 1) {
-                if (responseModel.body()!!.data.isNotEmpty()) {
-                    txtNoRecords.visibility = View.GONE
-                    dataList.clear()
-                    dataList.addAll(responseModel.body()!!.data)
-                    adapter.notifyDataSetChanged()
-                } else {
-                    dataList.clear()
-                    adapter.notifyDataSetChanged()
-                    txtNoRecords.visibility = View.VISIBLE
+        if (responseModel.body() != null) {
+            if (responseModel.body()!!.data.isNotEmpty()) {
+                if (scrollListener!!.loaded) {
+                    scrollListener!!.setLoaded()
                 }
-            } else {
-                if (responseModel.body()!!.data.isNotEmpty()) {
-                    dataList.addAll(responseModel.body()!!.data)
-                    adapter.notifyDataSetChanged()
+                if (pageIndex == 1) {
+                    if (responseModel.body()!!.data.isNotEmpty()) {
+                        txtNoRecords.visibility = View.GONE
+                        dataList.clear()
+                        dataList.addAll(responseModel.body()!!.data)
+                        adapter.notifyDataSetChanged()
+                    } else {
+                        dataList.clear()
+                        adapter.notifyDataSetChanged()
+                        txtNoRecords.visibility = View.VISIBLE
+                    }
+                } else {
+                    if (responseModel.body()!!.data.isNotEmpty()) {
+                        dataList.addAll(responseModel.body()!!.data)
+                        adapter.notifyDataSetChanged()
+                    }
                 }
             }
         } else {

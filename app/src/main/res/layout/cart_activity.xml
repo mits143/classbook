@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_grey_100">
+    android:background="@color/md_grey_100"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -37,227 +38,228 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <TextView
-                android:id="@+id/stripeDetailTextView9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/roboto"
-                android:lineSpacingExtra="8sp"
-                android:text="Grand Total : "
-                android:textColor="@color/md_grey_800"
-                android:textSize="@dimen/font_body_size"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stripeLineView2" />
-
-            <TextView
-                android:id="@+id/stripeDetailTextView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/roboto"
-                android:lineSpacingExtra="8sp"
-                android:text="Internet Handling Charges @2% :"
-                android:textColor="@color/md_grey_800"
-                android:textSize="@dimen/font_body_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stripeDetailTextView2" />
-
-            <TextView
-                android:id="@+id/stripeDetailTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/roboto"
-                android:lineSpacingExtra="8sp"
-                android:text="Total Amount : "
-                android:textAlignment="viewStart"
-                android:textColor="@color/md_grey_800"
-                android:textSize="@dimen/font_body_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stripeLineView" />
-
-            <TextView
-                android:id="@+id/txtClassbookPrice"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/roboto"
-                android:lineSpacingExtra="8sp"
-                android:text="Total Amount : "
-                android:textAlignment="viewStart"
-                android:textColor="@color/md_grey_800"
-                android:textSize="@dimen/font_body_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stripeDetailTextView" />
-
-            <TextView
-                android:id="@+id/txtClassAmt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/roboto"
-                android:lineSpacingExtra="8sp"
-                android:text=" \u20B9 1000.00"
-                android:textAlignment="textEnd"
-                android:textColor="@color/md_grey_800"
-                android:textSize="@dimen/font_body_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txtClassbookPrice" />
-
-            <TextView
-                android:id="@+id/stripeDetailTextView5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/roboto"
-                android:lineSpacingExtra="8sp"
-                android:text=" \u20B9 1000.00"
-                android:textAlignment="textEnd"
-                android:textColor="@color/md_grey_800"
-                android:textSize="@dimen/font_body_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/stripeDetailTextView2" />
-
-            <TextView
-                android:id="@+id/stripeDetailTextView8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/roboto"
-                android:lineSpacingExtra="8sp"
-                android:text="\u20B9 400.00"
-                android:textAlignment="textEnd"
-                android:textColor="@color/md_grey_800"
-                android:textSize="@dimen/font_body_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/stripeDetailTextView3" />
-
-            <TextView
-                android:id="@+id/stripeDetailTextView10"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/roboto"
-                android:lineSpacingExtra="8sp"
-                android:text="\u20B9 6400.00"
-
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/font_body_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stripeLineView2" />
-
-            <TextView
-                android:id="@+id/stripeDetailTextView7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/roboto"
-                android:lineSpacingExtra="8sp"
-                android:text="\u20B9 5000.00"
-                android:textAlignment="textEnd"
-                android:textColor="@color/md_grey_800"
-                android:textSize="@dimen/font_body_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/stripeDetailTextView" />
-
-            <TextView
-                android:id="@+id/stripeDetailTextView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/roboto"
-                android:lineSpacingExtra="8sp"
-                android:text="GST @ 18% : "
-                android:textColor="@color/md_grey_800"
-                android:textSize="@dimen/font_body_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtClassbookPrice" />
-
-            <View
-                android:id="@+id/stripeLineView"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="12dp"
-                android:background="@color/colorLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stripeTitleTextView" />
-
-            <View
-                android:id="@+id/stripeLineView2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stripeDetailTextView3" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/space_4"
-            android:layout_marginTop="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkoutButton" />
-
-        <Button
-            android:id="@+id/checkoutButton"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/button_round_corner"
-            android:text="PROCEED TO CHECKOUT "
-            android:textColor="@color/md_white_1000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <RelativeLayout
-        android:id="@+id/loader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white_trans"
-        android:visibility="gone">
+        android:layout_height="match_parent">
 
-        <com.victor.loading.rotate.RotateLoading
-            android:id="@+id/bookLoading"
-            android:layout_width="@dimen/space_100"
-            android:layout_height="@dimen/space_100"
+        <LinearLayout
+            android:id="@+id/llCart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/md_grey_100"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/stripeLineView"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorLine" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_4"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/stripeDetailTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto"
+                        android:lineSpacingExtra="8sp"
+                        android:text="Total Amount : "
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="@dimen/font_body_size" />
+
+                    <TextView
+                        android:id="@+id/stripeDetailTextView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:lineSpacingExtra="8sp"
+                        android:text="\u20B9 5000.00"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="@dimen/font_body_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_4"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtClassbookPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto"
+                        android:text="Total Amount : "
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="@dimen/font_body_size" />
+
+                    <TextView
+                        android:id="@+id/txtClassAmt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:lineSpacingExtra="8sp"
+                        android:text=" \u20B9 1000.00"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="@dimen/font_body_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_4"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/stripeDetailTextView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto"
+                        android:lineSpacingExtra="8sp"
+                        android:text="GST @ 18% : "
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="@dimen/font_body_size" />
+
+                    <TextView
+                        android:id="@+id/stripeDetailTextView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text=" \u20B9 1000.00"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="@dimen/font_body_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_4"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/stripeDetailTextView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto"
+                        android:text="Internet Handling Charges @2% :"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="@dimen/font_body_size" />
+
+                    <TextView
+                        android:id="@+id/stripeDetailTextView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="\u20B9 400.00"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="@dimen/font_body_size" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/stripeLineView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorLine" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_4"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/stripeDetailTextView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto"
+                        android:text="Grand Total : "
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="@dimen/font_body_size" />
+
+                    <TextView
+                        android:id="@+id/stripeDetailTextView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="\u20B9 6400.00"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/font_body_size" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/checkoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_round_corner"
+                android:text="PROCEED TO CHECKOUT "
+                android:textColor="@color/md_white_1000" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtNoRecords"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            app:loading_color="@color/md_deep_purple_900" />
+            android:layout_gravity="center"
+            android:text="No records found"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/loader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_trans"
+            android:visibility="gone">
+
+            <com.victor.loading.rotate.RotateLoading
+                android:id="@+id/bookLoading"
+                android:layout_width="@dimen/space_100"
+                android:layout_height="@dimen/space_100"
+                android:layout_centerInParent="true"
+                app:loading_color="@color/md_deep_purple_900" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</LinearLayout>

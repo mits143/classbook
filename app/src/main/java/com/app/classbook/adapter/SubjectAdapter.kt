@@ -37,15 +37,15 @@ class SubjectAdapter(private val dataList: List<Subject>?) :
 
             viewHolder.txtSubject.text = data.subjectName
 
-//            if (data.inCart){
-//                viewHolder.txtCart.isEnabled = false
-//                viewHolder.txtCart.text = "Already in cart"
-//                viewHolder.txtCart.setBackgroundColor(viewHolder.txtCart.context.resources.getColor(R.color.md_grey_500))
-//            }else{
-//                viewHolder.txtCart.isEnabled = true
-//                viewHolder.txtCart.text = "Add to cart"
-//                viewHolder.txtCart.setBackgroundColor(viewHolder.txtCart.context.resources.getColor(R.color.md_grey_200))
-//            }
+            if (data.inCart){
+                viewHolder.txtCart.isEnabled = false
+                viewHolder.txtCart.text = "Already in cart"
+                viewHolder.txtCart.setBackgroundColor(viewHolder.txtCart.context.resources.getColor(R.color.md_grey_500))
+            }else{
+                viewHolder.txtCart.isEnabled = true
+                viewHolder.txtCart.text = "Add to cart"
+                viewHolder.txtCart.setBackgroundColor(viewHolder.txtCart.context.resources.getColor(R.color.md_grey_200))
+            }
 
             viewHolder.itemView.setOnClickListener { v: View ->
                 itemClickListener.onItemClick(

@@ -33,12 +33,13 @@ class TopicActivity : AppCompatActivity(), ActivityTopicView.MainView {
     }
 
     private fun init() {
+        titleNameTextView.visibility = View.VISIBLE
         presenter = ActivityTopicPresenter(this, this)
         if (intent.extras != null) {
             data = intent.getSerializableExtra("data") as Subject //Obtaining data
+            titleNameTextView.text =  data.subjectName
             presenter.loadData(SharedPreference.authToken!!, data.smbId, data.subjectId)
         }
-        titleNameTextView.visibility = View.VISIBLE
         dataList = arrayListOf()
         val mLayoutManager = LinearLayoutManager(this)
         videoRecyclerView.layoutManager = mLayoutManager
@@ -54,6 +55,9 @@ class TopicActivity : AppCompatActivity(), ActivityTopicView.MainView {
                 )
             }
         })
+        ivBack.setOnClickListener {
+            finish()
+        }
     }
 
     override fun showProgressbar() {

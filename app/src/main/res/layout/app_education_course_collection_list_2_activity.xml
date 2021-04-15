@@ -17,7 +17,7 @@
             android:background="@color/colorPrimary">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivSetting"
+                android:id="@+id/ivBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -32,15 +32,15 @@
                 android:text="Topic"
                 android:visibility="gone"
                 android:layout_marginStart="@dimen/space_16"
-                android:layout_toEndOf="@id/ivSetting"/>
+                android:layout_toEndOf="@id/ivBack"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/HeaderTitleStyle"
                 android:id="@+id/titleNameTextView1"
-                android:text="Sub Topic"
-                android:visibility="gone"
+                style="@style/HeaderTitleStyle"
                 android:layout_marginStart="@dimen/space_16"
-                android:layout_toEndOf="@id/ivSetting"/>
+                android:layout_toEndOf="@id/ivSetting"
+                android:text="Sub Topic"
+                android:visibility="gone" />
 
         </RelativeLayout>
 

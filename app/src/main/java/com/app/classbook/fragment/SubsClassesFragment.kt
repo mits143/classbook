@@ -20,6 +20,11 @@ import com.app.classbook.presenter.FragmentSubscriptionPresenter
 import com.app.classbook.util.Utils
 import com.app.classbook.view.FragmentSubscriptionView
 import kotlinx.android.synthetic.main.subs_fragment.*
+import kotlinx.android.synthetic.main.subs_fragment.bookLoading
+import kotlinx.android.synthetic.main.subs_fragment.loader
+import kotlinx.android.synthetic.main.subs_fragment.placeList1RecyclerView
+import kotlinx.android.synthetic.main.subs_fragment.txtNoRecords
+import kotlinx.android.synthetic.main.transaction_fragment.*
 import retrofit2.Response
 
 
@@ -44,7 +49,6 @@ class SubsClassesFragment : Fragment(), FragmentSubscriptionView.MainView {
 
 
     private fun init() {
-
         presenter = FragmentSubscriptionPresenter(context, this)
         presenter.loadData(SharedPreference.authToken!!)
 
@@ -70,12 +74,17 @@ class SubsClassesFragment : Fragment(), FragmentSubscriptionView.MainView {
     }
 
     override fun onSuccess(responseModel: Response<SubscriptionResponse>) {
-        if (responseModel.body() != null && responseModel.body()!!.isNotEmpty()) {
+        if (responseModel.body() != null && responseModel.body()!!.data.isNotEmpty()) {
             dataList.clear()
-            for (i in responseModel.body()!!.indices) {
-                if (TextUtils.equals(responseModel.body()!![i].providerType, "Class")) {
-                    dataList.add(responseModel.body()!![i])
+            for (i in responseModel.body()!!.data.indices) {
+                if (TextUtils.equals(responseModel.body()!!.data[i].providerType, "Class")) {
+                    dataList.add(responseModel.body()!!.data[i])
                 }
+            }
+            if (dataList.isEmpty()) {
+                txtNoRecords.visibility = View.VISIBLE
+            }else{
+                txtNoRecords.visibility = View.GONE
             }
             adapter.notifyDataSetChanged()
         }

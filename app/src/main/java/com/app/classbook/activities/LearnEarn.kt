@@ -106,7 +106,7 @@ class LearnEarn : AppCompatActivity(), ActivityLearnEarnView.MainView {
         }
 
         ivBack.setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
+            finish()
         }
     }
 

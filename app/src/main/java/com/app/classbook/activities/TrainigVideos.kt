@@ -64,7 +64,7 @@ class TrainigVideos : AppCompatActivity(), ActivityTrainingView.MainView {
 //        }
 
         ivBack.setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
+            finish()
         }
     }
 

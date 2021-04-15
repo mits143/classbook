@@ -21,6 +21,8 @@ class Subject : Serializable {
     val otgsFees: Int = 0
     @SerializedName("physical")
     val physical: Boolean = false
+    @SerializedName("inCart")
+    val inCart: Boolean = false
     @SerializedName("physicalFees")
     val physicalFees: Int = 0
     @SerializedName("smbId")

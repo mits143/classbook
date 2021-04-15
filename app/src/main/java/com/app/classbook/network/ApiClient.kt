@@ -537,6 +537,14 @@ class ApiClient {
         )
     }
 
+    fun getTransactionDetail(
+        token: String
+    ): Observable<Response<TransactionResponse>> {
+        return myAppService.getTransactionDetail(
+            token
+        )
+    }
+
     fun postRemoveFromCart(
         token: String,
         cartItemId: Int

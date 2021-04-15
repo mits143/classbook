@@ -38,10 +38,9 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabGravity="fill"
             app:tabIndicatorColor="@color/md_white_1000"
             app:tabIndicatorHeight="3dp"
-            app:tabMode="fixed" />
+            app:tabMode="auto" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

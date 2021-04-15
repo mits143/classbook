@@ -18,11 +18,7 @@ import com.app.classbook.model.response.BoardsResponse
 import com.app.classbook.presenter.FragmentBoardPresenter
 import com.app.classbook.util.Utils.showLoginAlert
 import com.app.classbook.view.FragmentBoardView
-import kotlinx.android.synthetic.main.fragment_classes_list.*
-import kotlinx.android.synthetic.main.fragment_classes_list.ivCart
-import kotlinx.android.synthetic.main.fragment_classes_list.ivFav
-import kotlinx.android.synthetic.main.fragment_classes_list.ivNotification
-import kotlinx.android.synthetic.main.fragment_classes_list.ivSetting
+import kotlinx.android.synthetic.main.fragment_board_list.*
 import retrofit2.Response
 
 class BoardListFragment : AppCompatActivity(), FragmentBoardView.MainView {
@@ -33,7 +29,7 @@ class BoardListFragment : AppCompatActivity(), FragmentBoardView.MainView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_classes_list)
+        setContentView(R.layout.fragment_board_list)
         init()
     }
 
@@ -49,11 +45,11 @@ class BoardListFragment : AppCompatActivity(), FragmentBoardView.MainView {
         placeList1RecyclerView!!.adapter = adapter
         adapter.setOnItemClickListener(object : BoardAdapter1.OnItemClickListener {
             override fun onItemClick(view: View, obj: BoardsData, position: Int) {
-                startActivity(
-                    Intent(
-                        this@BoardListFragment, ClassDetailsActivity::class.java
-                    ).putExtra("id", obj.id).putExtra("title", obj.name)
-                )
+//                startActivity(
+//                    Intent(
+//                        this@BoardListFragment, ClassDetailsActivity::class.java
+//                    ).putExtra("id", obj.id).putExtra("title", obj.name)
+//                )
             }
         })
 
@@ -97,15 +93,15 @@ class BoardListFragment : AppCompatActivity(), FragmentBoardView.MainView {
             }
             500 -> {
                 Toast.makeText(
-                    this,
-                    getString(R.string.internal_server_error),
-                    Toast.LENGTH_SHORT
+                        this,
+                        getString(R.string.internal_server_error),
+                        Toast.LENGTH_SHORT
                 )
-                    .show()
+                        .show()
             }
             else -> {
                 Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT)
-                    .show()
+                        .show()
             }
         }
     }

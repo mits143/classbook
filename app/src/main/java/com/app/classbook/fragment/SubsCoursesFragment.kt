@@ -67,12 +67,17 @@ class SubsCoursesFragment : Fragment(), FragmentSubscriptionView.MainView {
     }
 
     override fun onSuccess(responseModel: Response<SubscriptionResponse>) {
-        if (responseModel.body() != null && responseModel.body()!!.isNotEmpty()) {
+        if (responseModel.body() != null && responseModel.body()!!.data.isNotEmpty()) {
             dataList.clear()
-            for (i in responseModel.body()!!.indices) {
-                if (TextUtils.equals(responseModel.body()!![i].providerType, "Courses")) {
-                    dataList.add(responseModel.body()!![i])
+            for (i in responseModel.body()!!.data.indices) {
+                if (TextUtils.equals(responseModel.body()!!.data[i].providerType, "Courses")) {
+                    dataList.add(responseModel.body()!!.data[i])
                 }
+            }
+            if (dataList.isEmpty()) {
+                txtNoRecords.visibility = View.VISIBLE
+            }else{
+                txtNoRecords.visibility = View.GONE
             }
             adapter.notifyDataSetChanged()
         }

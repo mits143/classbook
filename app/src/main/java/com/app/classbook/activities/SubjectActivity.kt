@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.classbook.R
 import com.app.classbook.SharedPreference
 import com.app.classbook.adapter.SubjectAdapter
+import com.app.classbook.model.response.SMBData
 import com.app.classbook.model.response.Subject
 import com.app.classbook.model.response.SubjectResponse
 import com.app.classbook.presenter.ActivitySubjectPresenter
 import com.app.classbook.util.Utils
+import com.app.classbook.util.Utils.getBasicDialog
 import com.app.classbook.view.ActivitySubjectView
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.app_education_list_1_activity.*
@@ -28,6 +30,7 @@ class SubjectActivity : AppCompatActivity(), ActivitySubjectView.MainView {
     private lateinit var dataList: ArrayList<Subject>
 
     private var id = 0;
+    lateinit var data: SMBData;
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +42,11 @@ class SubjectActivity : AppCompatActivity(), ActivitySubjectView.MainView {
     private fun init() {
         presenter = ActivitySubjectPresenter(this, this)
         if (intent.extras != null) {
-            id = intent.extras!!.getInt("id")
-
+            data = intent.getSerializableExtra("data") as SMBData //Obtaining data
+            id = data.smbId
+            txtBoard.text = data.boardName
+            txtMedium.text = data.mediumName
+            txtStandard.text = data.standardName
             presenter.loadData(
                 SharedPreference.authToken!!,
                 id
@@ -67,11 +73,7 @@ class SubjectActivity : AppCompatActivity(), ActivitySubjectView.MainView {
                             "Distance"
                         )
                     else
-                        Toast.makeText(
-                            this@SubjectActivity,
-                            "Please login to add in favorite",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        getBasicDialog(this@SubjectActivity)
                 } else {
                     startActivity(
                         Intent(
@@ -117,6 +119,11 @@ class SubjectActivity : AppCompatActivity(), ActivitySubjectView.MainView {
             Toast.makeText(this, responseModel.body()!!.get("message").asString, Toast.LENGTH_SHORT)
                 .show()
         }
+
+        presenter.loadData(
+            SharedPreference.authToken!!,
+            id
+        )
     }
 
     override fun onError(errorCode: Int) {

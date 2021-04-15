@@ -2,6 +2,7 @@ package com.app.classbook.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,14 @@ import com.app.classbook.model.response.TopicModelX
 import com.app.classbook.presenter.ActivityCourseDetailPresenter
 import com.app.classbook.util.Utils
 import com.app.classbook.view.ActivityCourseDetailView
+import kotlinx.android.synthetic.main.activity_classes_details.*
 import kotlinx.android.synthetic.main.activity_course_details.*
+import kotlinx.android.synthetic.main.activity_course_details.bookLoading
+import kotlinx.android.synthetic.main.activity_course_details.btnBack
+import kotlinx.android.synthetic.main.activity_course_details.ivCart
+import kotlinx.android.synthetic.main.activity_course_details.ivFav
+import kotlinx.android.synthetic.main.activity_course_details.ivNotification
+import kotlinx.android.synthetic.main.activity_course_details.loader
 import retrofit2.Response
 
 class CourseDetailsActivity : AppCompatActivity(), ActivityCourseDetailView.MainView {
@@ -50,6 +58,28 @@ class CourseDetailsActivity : AppCompatActivity(), ActivityCourseDetailView.Main
                 )
             }
         })
+
+        btnBack.setOnClickListener {
+            finish()
+        }
+        ivNotification.setOnClickListener {
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(this)
+            else
+                startActivity(Intent(this, NotificationActivity::class.java))
+        }
+        ivFav.setOnClickListener {
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(this)
+            else
+                startActivity(Intent(this, FavouriteActivity::class.java))
+        }
+        ivCart.setOnClickListener {
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(this)
+            else
+                startActivity(Intent(this, CartActivity::class.java))
+        }
     }
 
     override fun showProgressbar() {

@@ -2,10 +2,12 @@ package com.app.classbook.model.response
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-data class SMBResponse(
+class SMBResponse: Serializable {
     @SerializedName("data")
-    val `data`: List<SMBData>,
+    val `data`: List<SMBData> = arrayListOf()
+
     @SerializedName("message")
-    val message: String
-)
+    val message: String = ""
+}

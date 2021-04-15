@@ -37,7 +37,7 @@ data class RegisterRequest(
     @SerializedName("Name")
     var name: String, // Chate11 Classes
     @SerializedName("Pincode")
-    var pincode: String, // 394210
+    var pincode: Int, // 394210
     @SerializedName("ReferCode")
     var referCode: String, // Class101
     @SerializedName("RegistrationByTypeId")

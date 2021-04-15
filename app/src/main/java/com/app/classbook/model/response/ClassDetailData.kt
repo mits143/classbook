@@ -35,7 +35,7 @@ data class ClassDetailData(
     @SerializedName("email")
     val email: String,
     @SerializedName("establishmentDate")
-    val establishmentDate: Any,
+    val establishmentDate: String,
     @SerializedName("favouriteCount")
     val favouriteCount: Int,
     @SerializedName("id")

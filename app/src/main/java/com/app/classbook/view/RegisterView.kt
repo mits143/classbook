@@ -1,5 +1,6 @@
 package com.app.classbook.view
 
+import com.app.classbook.model.response.BoardsResponse
 import com.app.classbook.model.response.LoginResponse
 import com.app.classbook.model.response.StateResponse
 import okhttp3.MultipartBody
@@ -11,6 +12,7 @@ interface RegisterView {
         fun showProgressbar()
         fun hideProgressbar()
         fun onSuccessCommonData(int: Int, responseModel: Response<StateResponse>)
+        fun onSuccessBoard(int: Int, responseModel: Response<BoardsResponse>)
         fun onSuccess(responseModel: Response<LoginResponse>)
         fun onError(errorCode: Int)
         fun onError(throwable: Throwable)

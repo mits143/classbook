@@ -1,8 +1,10 @@
 package com.app.classbook.activities
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +19,7 @@ import com.app.classbook.model.response.SMBData
 import com.app.classbook.model.response.SMBResponse
 import com.app.classbook.presenter.ActivityClassDetailPresenter
 import com.app.classbook.util.ItemDivider
+import com.app.classbook.util.Utils
 import com.app.classbook.util.Utils.showLoginAlert
 import com.app.classbook.view.ActivityClassDetailView
 import com.google.gson.JsonObject
@@ -70,7 +73,7 @@ class ClassDetailsActivity : AppCompatActivity(), ActivityClassDetailView.MainVi
                     Intent(
                         this@ClassDetailsActivity,
                         SubjectActivity::class.java
-                    ).putExtra("id", obj.smbId)
+                    ).putExtra("data", obj)
                 )
             }
         })
@@ -79,17 +82,25 @@ class ClassDetailsActivity : AppCompatActivity(), ActivityClassDetailView.MainVi
             finish()
         }
         ivNotification.setOnClickListener {
-            startActivity(Intent(this, NotificationActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(this)
+            else
+                startActivity(Intent(this, NotificationActivity::class.java))
         }
         ivFav.setOnClickListener {
-            startActivity(Intent(this, FavouriteActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(this)
+            else
+                startActivity(Intent(this, FavouriteActivity::class.java))
         }
         ivCart.setOnClickListener {
-            startActivity(Intent(this, CartActivity::class.java))
+            if (TextUtils.equals(SharedPreference.authToken, "Default"))
+                Utils.getBasicDialog(this)
+            else
+                startActivity(Intent(this, CartActivity::class.java))
         }
-        classRatingBar.setOnClickListener {
-            startActivity(Intent(this, ReviewRatingActivity::class.java).putExtra("id", 1))
-        }
+//        classRatingBar.setOnClickListener {
+//        }
         favFloatingActionButton.setOnClickListener {
             if (!TextUtils.equals(SharedPreference.authToken, "Default"))
                 presenter.postAddToFav(SharedPreference.authToken!!, id, "class")
@@ -109,10 +120,19 @@ class ClassDetailsActivity : AppCompatActivity(), ActivityClassDetailView.MainVi
         txtViewMore1.setOnClickListener {
             if (TextUtils.equals(txtViewMore.text.toString(), "View More")) {
                 txtCuriculum.maxLines = Integer.MAX_VALUE;
-                txtViewMore.text = "View Less"
+                txtViewMore1.text = "View Less"
             } else {
                 txtCuriculum.maxLines = 3
-                txtViewMore.text = "View More"
+                txtViewMore1.text = "View More"
+            }
+        }
+        txtViewMore2.setOnClickListener {
+            if (TextUtils.equals(txtViewMore.text.toString(), "View More")) {
+                txtInstructor.maxLines = Integer.MAX_VALUE;
+                txtViewMore2.text = "View Less"
+            } else {
+                txtInstructor.maxLines = 3
+                txtViewMore2.text = "View More"
             }
         }
     }
@@ -137,6 +157,48 @@ class ClassDetailsActivity : AppCompatActivity(), ActivityClassDetailView.MainVi
             txtWebsite.text = responseModel.body()!!.data.website
             txtDesc.text = responseModel.body()!!.data.description
             txtCuriculum.text = responseModel.body()!!.data.curriculum
+            if (responseModel.body()!!.data.instructorListModel.isNotEmpty())
+                txtInstructor.text =
+                    responseModel.body()!!.data.instructorListModel[0].instructorDescription
+            if (!TextUtils.isEmpty(responseModel.body()!!.data.introductionVideoUrl))
+                andExoPlayerView.setSource(responseModel.body()!!.data.introductionVideoUrl)
+            classRatingBar.rating = responseModel.body()!!.data.averageRating.toFloat()
+
+            if (responseModel.body()!!.data.favouriteCount == 1) {
+                favFloatingActionButton.backgroundTintList =
+                    ColorStateList.valueOf(resources.getColor(R.color.md_grey_500))
+            } else {
+                favFloatingActionButton.backgroundTintList =
+                    ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            }
+            classRatingBar.setOnTouchListener(View.OnTouchListener { v, event ->
+                if (event.action == MotionEvent.ACTION_UP) {
+                    startActivity(
+                        Intent(this, ReviewRatingActivity::class.java)
+                            .putExtra(
+                                "video",
+                                responseModel.body()!!.data.averageRatingForVideoQuality
+                            )
+                            .putExtra(
+                                "audio",
+                                responseModel.body()!!.data.averageRatingForAudioQuality
+                            )
+                            .putExtra(
+                                "points",
+                                responseModel.body()!!.data.averageRatingForDescriptionOfPoints
+                            )
+                            .putExtra(
+                                "videos",
+                                responseModel.body()!!.data.averageRatingForLengthOfVideo
+                            )
+                            .putExtra(
+                                "syllabus",
+                                responseModel.body()!!.data.averageRatingForSyllabus
+                            )
+                    )
+                }
+                return@OnTouchListener true
+            })
         }
     }
 

@@ -33,7 +33,6 @@ class ActivityClassDetailPresenter : ActivityClassDetailView.MainPresenter {
         id: Int
     ) {
         mainView!!.showProgressbar()
-
         if (NetWorkConection.isNEtworkConnected(context!!)) {
             disposable = ApiClient.instance
                 .getClassDetail(

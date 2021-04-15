@@ -32,7 +32,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/HeaderTitleStyle"
                 android:layout_marginStart="@dimen/space_16"
-                android:layout_toEndOf="@id/ivSetting"
+                android:layout_toEndOf="@id/ivBack"
                 android:text="My Transaction" />
 
         </RelativeLayout>

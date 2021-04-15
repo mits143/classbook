@@ -41,83 +41,10 @@
                     app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/md_grey_100">
-
-                        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
-                            android:id="@+id/placeImageView"
-                            android:layout_width="0dp"
-                            android:layout_height="250dp"
-                            android:contentDescription="TODO"
-                            android:scaleType="centerCrop"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="1.0"
-                            tools:srcCompat="@drawable/baseline_image_black_24" />
-
-                        <ImageView
-                            android:id="@+id/gradientImageView"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:scaleType="fitXY"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/baseilne_play_24" />
-
-                        <TextView
-                            android:id="@+id/txtRecorded"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginBottom="5dp"
-                            android:background="@drawable/button_dialog_line_border_and_transparent_background"
-                            android:gravity="center"
-                            android:padding="5dp"
-                            android:text="Recorded"
-                            android:textColor="@color/md_white_1000"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/txtLive"
-                            android:layout_width="55dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginBottom="5dp"
-                            android:background="@drawable/button_dialog_line_border_and_transparent_background"
-                            android:gravity="center"
-                            android:padding="5dp"
-                            android:text="Live"
-                            android:textColor="@color/md_white_1000"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@+id/txtRecorded" />
-
-                        <TextView
-                            android:id="@+id/txtShare"
-                            android:layout_width="55dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginBottom="5dp"
-                            android:background="@drawable/button_dialog_line_border_and_transparent_background"
-                            android:gravity="center"
-                            android:padding="5dp"
-                            android:text="Share"
-                            android:textColor="@color/md_white_1000"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@+id/txtLive" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
                     <!--Header Layout-->
 
                     <RelativeLayout
+                        android:id="@+id/header"
                         android:layout_width="match_parent"
                         android:layout_height="?android:actionBarSize"
                         android:background="@color/colorPrimary">
@@ -180,6 +107,80 @@
                             android:padding="4dp"
                             android:src="@drawable/baseline_basket_line_white_24"
                             android:tint="@color/md_white_1000" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="?actionBarSize"
+                        android:background="@color/md_grey_100">
+
+                        <com.potyvideo.library.AndExoPlayerView
+                            android:id="@+id/andExoPlayerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp" />
+
+                        <ImageView
+                            android:id="@+id/gradientImageView"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:scaleType="fitXY"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/baseilne_play_24" />
+
+                        <TextView
+                            android:id="@+id/txtRecorded"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_toLeftOf="@+id/txtLive"
+                            android:background="@drawable/button_dialog_line_border_and_transparent_background"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Recorded"
+                            android:textColor="@color/md_white_1000"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtLive"
+                            android:layout_width="55dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_toLeftOf="@+id/txtShare"
+                            android:background="@drawable/button_dialog_line_border_and_transparent_background"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Live"
+                            android:textColor="@color/md_white_1000"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/txtRecorded" />
+
+                        <TextView
+                            android:id="@+id/txtShare"
+                            android:layout_width="55dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:background="@drawable/button_dialog_line_border_and_transparent_background"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Share"
+                            android:textColor="@color/md_white_1000"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/txtLive" />
 
                     </RelativeLayout>
 
@@ -332,10 +333,18 @@
                                     android:padding="10dp">
 
                                     <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:maxLines="3"
+                                        android:text="Overview"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold" />
+
+                                    <TextView
                                         android:id="@+id/txtDesc"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:maxLines="3"/>
+                                        android:maxLines="3" />
 
                                     <TextView
                                         android:id="@+id/txtViewMore"
@@ -364,6 +373,14 @@
                                     android:padding="10dp">
 
                                     <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:maxLines="3"
+                                        android:text="Curriculum"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold" />
+
+                                    <TextView
                                         android:id="@+id/txtCuriculum"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -371,6 +388,46 @@
 
                                     <TextView
                                         android:id="@+id/txtViewMore1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="end"
+                                        android:gravity="end"
+                                        android:padding="5dp"
+                                        android:text="View More" />
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                app:cardCornerRadius="5dp"
+                                app:cardUseCompatPadding="true">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:maxLines="3"
+                                        android:text="Instructor"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/txtInstructor"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:maxLines="3" />
+
+                                    <TextView
+                                        android:id="@+id/txtViewMore2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="end"
@@ -423,7 +480,7 @@
                                     android:id="@+id/txtSeeBatch"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:layout_weight="0.9"
                                     android:background="@drawable/button_dialog_line_border_and_transparent_background"
                                     android:gravity="center"
                                     android:padding="10dp"

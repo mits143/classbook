@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -22,15 +23,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.classbook.R
 import com.app.classbook.SharedPreference
+import com.app.classbook.adapter.BoardAdapter2
 import com.app.classbook.adapter.CommonAdapter
 import com.app.classbook.adapter.ImagesAdapter
 import com.app.classbook.adapter.StateAdapter
 import com.app.classbook.model.request.RegisterRequest
 import com.app.classbook.model.request.StandardMediumBoard
-import com.app.classbook.model.response.LoginResponse
-import com.app.classbook.model.response.StateResponse
-import com.app.classbook.model.response.StateResponseItem
+import com.app.classbook.model.response.*
 import com.app.classbook.presenter.RegisterPresenter
+import com.app.classbook.util.Constant
 import com.app.classbook.util.Utils
 import com.app.classbook.util.Utils.OPERATION_CAPTURE_PHOTO
 import com.app.classbook.util.Utils.OPERATION_CHOOSE_MULTIPLE_PHOTO
@@ -59,7 +60,7 @@ import okhttp3.RequestBody
 import retrofit2.Response
 import java.io.File
 
-class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
+class SignUpActivity : AppCompatActivity(), RegisterView.MainView, AdapterView.OnItemSelectedListener {
 
     private lateinit var presenter: RegisterPresenter
     var type = ""
@@ -70,6 +71,8 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
 
     private var file0: File? = null;
 
+    var gender = ""
+
     var stateList: ArrayList<StateResponseItem> = arrayListOf()
     var stateID = 0
 
@@ -79,8 +82,8 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
     var pincodeList: ArrayList<StateResponseItem> = arrayListOf()
     var pincodeID = 0
 
-    private lateinit var boardAdapter: CommonAdapter
-    var boardList: ArrayList<StateResponseItem> = arrayListOf()
+    private lateinit var boardAdapter: BoardAdapter2
+    var boardList: ArrayList<BoardsData> = arrayListOf()
 
     private lateinit var mediumAdapter: CommonAdapter
     var mediumList: ArrayList<StateResponseItem> = arrayListOf()
@@ -116,6 +119,7 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
         presenter.getBoard(SharedPreference.authToken!!)
         presenter.getMedium(SharedPreference.authToken!!)
         presenter.getStandard(SharedPreference.authToken!!)
+        genderLayout!!.onItemSelectedListener = this
         if (intent.extras != null) {
             type = intent.extras!!.getString("type")!!
             if (TextUtils.equals(type, "class")) {
@@ -190,6 +194,23 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
             }
         }
 
+        helpButton.setOnClickListener {
+            val intent = Intent(this, UiWebViewWebViewBasicActivity::class.java)
+            intent.putExtra("title", "About Us")
+            intent.putExtra("url", Constant.ABOUT_US)
+            startActivity(intent)
+        }
+
+        loginButton.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+
+//        genderLayout.setOnItemClickListener() { parent, _, position, id ->
+//            var selectedPoi = parent?.getItemAtPosition(position).toString()
+//            gender = selectedPoi
+//        }
+
         state.setOnItemClickListener() { parent, _, position, id ->
             val selectedPoi = parent.adapter.getItem(position) as StateResponseItem?
             state.setText(selectedPoi?.name)
@@ -255,29 +276,36 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
 
         images.setOnClickListener {
             val checkSelfPermission = ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.CAMERA
+                    this,
+                    android.Manifest.permission.CAMERA
             ) + ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    this,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
             ) + ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
+                    this,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
             )
             if (checkSelfPermission != PackageManager.PERMISSION_GRANTED) {
                 //Requests permissions to be granted to this application at runtime
                 ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(
-                        android.Manifest.permission.CAMERA,
-                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        android.Manifest.permission.READ_EXTERNAL_STORAGE
-                    ), 2
+                        this,
+                        arrayOf(
+                                android.Manifest.permission.CAMERA,
+                                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                android.Manifest.permission.READ_EXTERNAL_STORAGE
+                        ), 2
                 )
             } else {
                 openGallery1(this)
             }
         }
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        gender = parent!!.getItemAtPosition(position).toString()
     }
 
     private fun submit() {
@@ -325,9 +353,8 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
             return
         }
         if (!TextUtils.equals(type, "class") && !TextUtils.equals(type, "school")) {
-            if (TextUtils.isEmpty(genderLayout.text.toString().trim())) {
-                genderLayout.error = "Select Gender"
-                genderLayout.requestFocus()
+            if (TextUtils.isEmpty(gender)) {
+                Toast.makeText(this, "Select gender", Toast.LENGTH_SHORT).show()
                 return
             }
         }
@@ -389,31 +416,31 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
         }
 
         val jsonObject = RegisterRequest(
-            addressTextView.text.toString().trim(),
-            altMobileNumber.text.toString().trim(),
-            "",
-            false,
-            boardid,
-            cityID,
-            mobileNumber.text.toString().trim(),
-            dateOfBirth.text.toString().trim(),
-            "",
-            email.text.toString().trim(),
-            dateOfBirth.text.toString().trim(),
-            firstName.text.toString().trim(),
-            genderLayout.text.toString().trim(),
-            lastName.text.toString().trim(),
-            mediumid,
-            firstName.text.toString().trim(),
-            zipCode.text.toString().trim(),
-            cpCode.text.toString().trim(),
-            1,
-            1,
-            regNumber.text.toString().trim(),
-            stdid,
-            stateID,
-            teachingExp.text.toString().trim(),
-            ""
+                addressTextView.text.toString().trim(),
+                altMobileNumber.text.toString().trim(),
+                "",
+                false,
+                boardid,
+                cityID,
+                mobileNumber.text.toString().trim(),
+                dateOfBirth.text.toString().trim(),
+                "",
+                email.text.toString().trim(),
+                dateOfBirth.text.toString().trim(),
+                firstName.text.toString().trim(),
+                gender,
+                lastName.text.toString().trim(),
+                mediumid,
+                firstName.text.toString().trim(),
+                pincodeID,
+                cpCode.text.toString().trim(),
+                1,
+                1,
+                regNumber.text.toString().trim(),
+                stdid,
+                stateID,
+                teachingExp.text.toString().trim(),
+                ""
         )
 
         val json = Gson().toJson(jsonObject)
@@ -422,11 +449,11 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
         var body0: MultipartBody.Part? = null
         if (file0 != null) {
             val reqFile0: RequestBody =
-                RequestBody.create(MediaType.parse("multipart/form-data"), file0!!)
+                    RequestBody.create(MediaType.parse("multipart/form-data"), file0!!)
             body0 = MultipartBody.Part.createFormData("file", file0!!.name, reqFile0)
         } else {
             val attachmentEmpty =
-                RequestBody.create(MediaType.parse("text/plain"), "")
+                    RequestBody.create(MediaType.parse("text/plain"), "")
             body0 = MultipartBody.Part.createFormData("file", "", attachmentEmpty);
         }
 
@@ -438,18 +465,18 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
         }
 
         val data: RequestBody =
-            RequestBody.create(MultipartBody.FORM, json)
+                RequestBody.create(MultipartBody.FORM, json)
 
         val DeviceId: RequestBody =
-            RequestBody.create(
-                MultipartBody.FORM,
-                Utils.deviceId(this)
-            )
+                RequestBody.create(
+                        MultipartBody.FORM,
+                        Utils.deviceId(this)
+                )
         val FCMId: RequestBody =
-            RequestBody.create(
-                MultipartBody.FORM,
-                SharedPreference.token!!
-            )
+                RequestBody.create(
+                        MultipartBody.FORM,
+                        SharedPreference.token!!
+                )
 
         isRegister = true
 
@@ -492,28 +519,28 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
                     stateList.clear()
                     stateList.addAll(responseModel.body()!!)
                     val adapter =
-                        StateAdapter(this, android.R.layout.simple_list_item_1, stateList!!)
+                            StateAdapter(this, android.R.layout.simple_list_item_1, stateList!!)
                     state.setAdapter(adapter)
                 }
                 2 -> {
                     cityList.clear()
                     cityList.addAll(responseModel.body()!!)
                     val adapter =
-                        StateAdapter(this, android.R.layout.simple_list_item_1, cityList!!)
+                            StateAdapter(this, android.R.layout.simple_list_item_1, cityList!!)
                     city.setAdapter(adapter)
                 }
                 3 -> {
                     pincodeList.clear()
                     pincodeList.addAll(responseModel.body()!!)
                     val adapter =
-                        StateAdapter(this, android.R.layout.simple_list_item_1, pincodeList!!)
+                            StateAdapter(this, android.R.layout.simple_list_item_1, pincodeList!!)
                     zipCode.setAdapter(adapter)
                 }
-                4 -> {
-                    boardList.clear()
-                    boardList.addAll(responseModel.body()!!)
-                    boardAdapter.notifyDataSetChanged()
-                }
+//                4 -> {
+//                    boardList.clear()
+//                    boardList.addAll(responseModel.body()!!)
+//                    boardAdapter.notifyDataSetChanged()
+//                }
                 5 -> {
                     mediumList.clear()
                     mediumList.addAll(responseModel.body()!!)
@@ -543,6 +570,14 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
         }
     }
 
+    override fun onSuccessBoard(int: Int, responseModel: Response<BoardsResponse>) {
+        if (responseModel.body() != null && responseModel.body()!!.data.isNotEmpty()) {
+            boardList.clear()
+            boardList.addAll(responseModel.body()!!.data)
+            boardAdapter.notifyDataSetChanged()
+        }
+    }
+
     override fun onSuccess(responseModel: Response<LoginResponse>) {
         if (responseModel.body() != null) {
             SharedPreference.isLogin = true
@@ -555,11 +590,40 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
     }
 
     override fun onError(errorCode: Int) {
-
+        when (errorCode) {
+            401 -> {
+                Utils.showLoginAlert(this)
+            }
+            409 -> {
+                Toast.makeText(
+                        this,
+                        "Email or Mobile Number is already exists",
+                        Toast.LENGTH_SHORT
+                )
+                        .show()
+            }
+            500 -> {
+                Toast.makeText(
+                        this,
+                        getString(R.string.internal_server_error),
+                        Toast.LENGTH_SHORT
+                )
+                        .show()
+            }
+            else -> {
+                Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT)
+                        .show()
+            }
+        }
     }
 
     override fun onError(throwable: Throwable) {
+        Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show()
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onStop()
     }
 
     private fun showDialog() {
@@ -575,24 +639,24 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
         txtTakePhoto.setOnClickListener {
             dialog.dismiss()
             val checkSelfPermission = ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.CAMERA
+                    this,
+                    android.Manifest.permission.CAMERA
             ) + ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    this,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
             ) + ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
+                    this,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
             )
             if (checkSelfPermission != PackageManager.PERMISSION_GRANTED) {
                 //Requests permissions to be granted to this application at runtime
                 ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(
-                        android.Manifest.permission.CAMERA,
-                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        android.Manifest.permission.READ_EXTERNAL_STORAGE
-                    ), 1
+                        this,
+                        arrayOf(
+                                android.Manifest.permission.CAMERA,
+                                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                android.Manifest.permission.READ_EXTERNAL_STORAGE
+                        ), 1
                 )
             } else {
                 capturePhoto(this)
@@ -602,24 +666,24 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
         txtChoosePhoto.setOnClickListener {
             dialog.dismiss()
             val checkSelfPermission = ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.CAMERA
+                    this,
+                    android.Manifest.permission.CAMERA
             ) + ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    this,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
             ) + ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
+                    this,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
             )
             if (checkSelfPermission != PackageManager.PERMISSION_GRANTED) {
                 //Requests permissions to be granted to this application at runtime
                 ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(
-                        android.Manifest.permission.CAMERA,
-                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        android.Manifest.permission.READ_EXTERNAL_STORAGE
-                    ), 1
+                        this,
+                        arrayOf(
+                                android.Manifest.permission.CAMERA,
+                                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                android.Manifest.permission.READ_EXTERNAL_STORAGE
+                        ), 1
                 )
             } else {
                 openGallery(this)
@@ -641,10 +705,10 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
 
         val layoutManager = LinearLayoutManager(this)
         rvDialog.layoutManager = layoutManager
-        boardAdapter = CommonAdapter(boardList)
+        boardAdapter = BoardAdapter2(boardList)
         rvDialog.adapter = boardAdapter
-        boardAdapter.setOnItemClickListener(object : CommonAdapter.OnItemClickListener {
-            override fun onItemClick(view: View, obj: StateResponseItem, position: Int) {
+        boardAdapter.setOnItemClickListener(object : BoardAdapter2.OnItemClickListener {
+            override fun onItemClick(view: View, obj: BoardsData, position: Int) {
 //                    for (i in standardList.indices) {
 //                        if (standardList[i].isChecked) {
 //                            standardList[i].isChecked = false
@@ -794,7 +858,7 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
                             val file = File(path)
                             file0 = file
                             Glide.with(this).load(uri)
-                                .apply(requestOptions).into(imageView98)
+                                    .apply(requestOptions).into(imageView98)
                         } catch (e: java.lang.Exception) {
                             Log.e("TAG", "File select error", e)
                         }
@@ -809,7 +873,7 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
                         var currentItem = 0
                         while (currentItem < count) {
                             val imageUri: Uri =
-                                data!!.clipData!!.getItemAt(currentItem).uri
+                                    data!!.clipData!!.getItemAt(currentItem).uri
                             currentItem += 1
                             Log.d("Uri Selected", imageUri.toString())
                             try {
@@ -834,13 +898,13 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
 
 
     override fun onRequestPermissionsResult(
-        requestCode: Int, permissions: Array<out String>, grantedResults: IntArray
+            requestCode: Int, permissions: Array<out String>, grantedResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantedResults)
         when (requestCode) {
             1 ->
                 if (grantedResults.isNotEmpty() && grantedResults[0] ==
-                    PackageManager.PERMISSION_GRANTED
+                        PackageManager.PERMISSION_GRANTED
                 ) {
                     openGallery(this)
                 } else {
@@ -848,7 +912,7 @@ class SignUpActivity : AppCompatActivity(), RegisterView.MainView {
                 }
             2 ->
                 if (grantedResults.isNotEmpty() && grantedResults[0] ==
-                    PackageManager.PERMISSION_GRANTED
+                        PackageManager.PERMISSION_GRANTED
                 ) {
                     openGallery1(this)
                 } else {

@@ -10,28 +10,28 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.classbook.R
 import com.app.classbook.SharedPreference
-import com.app.classbook.adapter.SubscriptionAdapter
-import com.app.classbook.model.response.SubscriptionResponse
-import com.app.classbook.model.response.SubscriptionResponseItem
-import com.app.classbook.presenter.FragmentSubscriptionPresenter
+import com.app.classbook.adapter.TransactionAdapter
+import com.app.classbook.model.response.TransactionResponse
+import com.app.classbook.model.response.TransactionResponseItem
+import com.app.classbook.presenter.FragmentTransactionPresenter
 import com.app.classbook.util.Utils
-import com.app.classbook.view.FragmentSubscriptionView
-import kotlinx.android.synthetic.main.subs_fragment.*
+import com.app.classbook.view.FragmentTransactionView
+import kotlinx.android.synthetic.main.transaction_fragment.*
 import retrofit2.Response
 
 
-class SubsTeacherFragment : Fragment(), FragmentSubscriptionView.MainView {
+class TransactionExpertsFragment : Fragment(), FragmentTransactionView.MainView {
 
-    private lateinit var presenter: FragmentSubscriptionPresenter
-    private lateinit var adapter: SubscriptionAdapter
-    private lateinit var dataList: ArrayList<SubscriptionResponseItem>
+    private lateinit var presenter: FragmentTransactionPresenter
+    private lateinit var adapter: TransactionAdapter
+    private lateinit var dataList: ArrayList<TransactionResponseItem>
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.subs_fragment, container, false)
+        return inflater.inflate(R.layout.transaction_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -39,19 +39,17 @@ class SubsTeacherFragment : Fragment(), FragmentSubscriptionView.MainView {
         init()
     }
 
-
     private fun init() {
-
-        presenter = FragmentSubscriptionPresenter(context, this)
+        presenter = FragmentTransactionPresenter(context, this)
         presenter.loadData(SharedPreference.authToken!!)
 
         val layoutManager = LinearLayoutManager(context)
         placeList1RecyclerView!!.layoutManager = layoutManager
         dataList = arrayListOf()
-        adapter = SubscriptionAdapter(dataList)
+        adapter = TransactionAdapter(dataList)
         placeList1RecyclerView!!.adapter = adapter
-        adapter.setOnItemClickListener(object : SubscriptionAdapter.OnItemClickListener {
-            override fun onItemClick(view: View, obj: SubscriptionResponseItem, position: Int) {
+        adapter.setOnItemClickListener(object : TransactionAdapter.OnItemClickListener {
+            override fun onItemClick(view: View, obj: TransactionResponseItem, position: Int) {
             }
         })
     }
@@ -66,14 +64,15 @@ class SubsTeacherFragment : Fragment(), FragmentSubscriptionView.MainView {
         bookLoading.stop()
     }
 
-    override fun onSuccess(responseModel: Response<SubscriptionResponse>) {
-        if (responseModel.body() != null && responseModel.body()!!.data.isNotEmpty()) {
+    override fun onSuccess(responseModel: Response<TransactionResponse>) {
+        if (responseModel.body() != null && responseModel.body()!!.isNotEmpty()) {
             dataList.clear()
-            for (i in responseModel.body()!!.data.indices) {
-                if (TextUtils.equals(responseModel.body()!!.data[i].providerType, "Teacher")) {
-                    dataList.add(responseModel.body()!!.data[i])
+            for (i in responseModel.body()!!.indices) {
+                if (TextUtils.equals(responseModel.body()!![i].providerType, "Expert")) {
+                    dataList.add(responseModel.body()!![i])
                 }
             }
+
             if (dataList.isEmpty()) {
                 txtNoRecords.visibility = View.VISIBLE
             }else{
@@ -90,15 +89,15 @@ class SubsTeacherFragment : Fragment(), FragmentSubscriptionView.MainView {
             }
             500 -> {
                 Toast.makeText(
-                    requireActivity(),
-                    getString(R.string.internal_server_error),
-                    Toast.LENGTH_SHORT
+                        requireActivity(),
+                        getString(R.string.internal_server_error),
+                        Toast.LENGTH_SHORT
                 )
-                    .show()
+                        .show()
             }
             else -> {
                 Toast.makeText(requireActivity(), getString(R.string.error), Toast.LENGTH_SHORT)
-                    .show()
+                        .show()
             }
         }
     }
@@ -111,5 +110,4 @@ class SubsTeacherFragment : Fragment(), FragmentSubscriptionView.MainView {
         super.onDestroyView()
         presenter.onStop()
     }
-
 }

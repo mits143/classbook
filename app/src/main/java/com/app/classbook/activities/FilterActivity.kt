@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,7 @@ import com.app.classbook.adapter.CommonAdapter
 import com.app.classbook.adapter.StateAdapter
 import com.app.classbook.model.response.*
 import com.app.classbook.presenter.FilterPresenter
+import com.app.classbook.util.Utils
 import com.app.classbook.view.FilterView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_filter.*
@@ -303,10 +305,31 @@ class FilterActivity : AppCompatActivity(), FilterView.MainView {
     }
 
     override fun onError(errorCode: Int) {
-
+        when (errorCode) {
+            401 -> {
+                Utils.showLoginAlert(this)
+            }
+            500 -> {
+                Toast.makeText(
+                    this,
+                    getString(R.string.internal_server_error),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
+            else -> {
+                Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
     }
 
     override fun onError(throwable: Throwable) {
+        Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show()
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onStop()
     }
 }

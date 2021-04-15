@@ -61,14 +61,28 @@ class CartActivity : AppCompatActivity(), ActivityCartView.MainView {
     override fun onSuccess(responseModel: Response<CartListResponse>) {
         if (responseModel.body() != null) {
             if (responseModel.body()!!.data.cartCompleteDetail.cartDetailModel.isNotEmpty()) {
+                txtNoRecords.visibility = View.GONE
+                llCart.visibility = View.VISIBLE
                 dataList.clear()
                 dataList.addAll(responseModel.body()!!.data.cartCompleteDetail.cartDetailModel)
                 adapter.notifyDataSetChanged()
+            } else {
+                dataList.clear()
+                llCart.visibility = View.GONE
+                txtNoRecords.visibility = View.VISIBLE
+                adapter.notifyDataSetChanged()
             }
-            stripeDetailTextView5.text = responseModel.body()!!.data.cartCompleteDetail.gst.toString()
-            stripeDetailTextView8.text = responseModel.body()!!.data.cartCompleteDetail.internetHandlingCharge.toString()
-            stripeDetailTextView10.text = responseModel.body()!!.data.cartCompleteDetail.grandTotal.toString()
-            stripeDetailTextView7.text = responseModel.body()!!.data.cartCompleteDetail.totalPrice.toString()
+            stripeDetailTextView5.text =
+                responseModel.body()!!.data.cartCompleteDetail.gst.toString()
+            stripeDetailTextView8.text =
+                responseModel.body()!!.data.cartCompleteDetail.internetHandlingCharge.toString()
+            stripeDetailTextView10.text =
+                responseModel.body()!!.data.cartCompleteDetail.grandTotal.toString()
+            stripeDetailTextView7.text =
+                responseModel.body()!!.data.cartCompleteDetail.totalPrice.toString()
+        } else {
+            dataList.clear()
+            adapter.notifyDataSetChanged()
         }
     }
 

@@ -161,14 +161,14 @@ class RegisterPresenter : RegisterView.MainPresenter {
 
         if (NetWorkConection.isNEtworkConnected(context!!)) {
             disposable = ApiClient.instance
-                .getBoards(token)
+                .getBoard(token)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ listResponse ->
                     mainView!!.hideProgressbar()
                     when (val responseCode = listResponse.code()) {
                         200, 201, 202, 204 -> {
-                            mainView!!.onSuccessCommonData(4, listResponse)
+                            mainView!!.onSuccessBoard(1,listResponse)
                         }
                         400, 401, 500 -> {
                             mainView!!.onError(responseCode)
@@ -524,7 +524,7 @@ class RegisterPresenter : RegisterView.MainPresenter {
                         200, 201, 202, 204 -> {
                             mainView!!.onSuccess(listResponse)
                         }
-                        400, 401, 500 -> {
+                        400, 401,409, 500 -> {
                             mainView!!.onError(responseCode)
                         }
                     }

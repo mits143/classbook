@@ -4,8 +4,7 @@ package com.app.classbook.model.response
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class
-SMBData: Serializable{
+class SMBData: Serializable{
     @SerializedName("boardId")
     val boardId: Int = 0
     @SerializedName("boardName")
